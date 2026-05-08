@@ -2,7 +2,7 @@
 """
 Created on Mon Jul 28 13:18:51 2025
 
-@title: NESCAPES_func_processraw 
+@title: FUNC_PROCESS_RAW
 @author: haley.synan
 @category:
     FUNCTIONS 
