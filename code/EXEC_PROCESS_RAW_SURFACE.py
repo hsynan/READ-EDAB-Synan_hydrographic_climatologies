@@ -18,15 +18,10 @@ import argparse
 # command line input of data source
 parser = argparse.ArgumentParser()
 parser.add_argument("data_source",type=str, help="The name of the data source. Options include: argo, bcodmo,cfrf,dfo,ecomon,metrawl,neamap,neracoos,maracoos,wod_apb,wod_ctd,wod_drb,wod_gld,wod_osd,wod_mrb,wod_uor,wod_pfl,seabass,pioneerarray,sumd")
+parser.add_argument("base_dir",type=str, help="The base directory (where data and code are stored in subfolders")
 args = parser.parse_args()
 data_source = args.data_source
-
-# autodetect file locations 
-loc = socket.gethostname()
-if loc=='NECL04740467':
-    base_dir=os.path.join('W:','nadata','PROJECTS','NESCAPES')
-else: 
-    base_dir = os.path.join('/','mnt','EDAB_Archive','nadata','PROJECTS','NESCAPES')
+base_dir = args.base_dir
 
 # load trees and source dictionary
 source = get_source(local_dir=os.path.join(base_dir,'SOURCE_DATA')) 
