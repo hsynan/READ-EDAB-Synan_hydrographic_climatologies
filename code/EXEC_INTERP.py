@@ -6,17 +6,17 @@ Created on Mon Jul 28 14:40:17 2025
 import os
 import pandas as pd
 import urllib
-from NESCAPES_func_interp import compare_mtime
-from NESCAPES_func_interp import create_grid
-from NESCAPES_func_interp import barnesn
-from NESCAPES_func_interp import make_nc
+from FUNC_INTERP import compare_mtime
+from FUNC_INTERP import create_grid
+from FUNC_INTERP import barnesn
+from FUNC_INTERP import make_nc
 import numpy as np
 import xarray as xr
 from global_land_mask import globe
 from scipy.ndimage import binary_dilation
-from NESCAPES_func_interp import match_nearest
-from NESCAPES_func_interp import find_closest_pairs
-from NESCAPES_func_interp import outlier_sum_stats
+from FUNC_INTERP import match_nearest
+from FUNC_INTERP import find_closest_pairs
+from FUNC_INTERP import outlier_sum_stats
 import geopandas as gpd 
 import socket
 import argparse
