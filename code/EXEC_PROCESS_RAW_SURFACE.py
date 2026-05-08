@@ -5,7 +5,7 @@ Created on Wed Feb 25 08:39:39 2026
 """
 
 
-from NESCAPES_func_processraw import *
+from FUNC_PROCESS_RAW import *
 from NESCAPES_func_sources_urls import get_source
 import socket
 import os 
