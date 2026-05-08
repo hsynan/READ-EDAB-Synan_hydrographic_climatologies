@@ -79,11 +79,7 @@ def make_nc(data,df,depth=''):
     if depth =='bottom':
         if ds.rio.crs is None:
             ds.rio.write_crs("epsg:4326", inplace=True)
-        try:
-            shp = gpd.read_file(r'/mnt/EDAB_Archive/nadata/PROJECTS/NESCAPES/SOURCE_DATA/SHAPEFILES/NES_5REGIONS.shp')
-        except:
-            shp = gpd.read_file(r'W:\nadata\PROJECTS\NESCAPES\SOURCE_DATA\SHAPEFILES\NES_5REGIONS.shp')
-        # 3. Match the CRS of the shapefile to the dataset
+        shp = gpd.read_file(r'https://github.com/hsynan/READ-EDAB-Synan_hydrographic_climatologies/raw/refs/heads/main/data/shapefiles/NES_5REGIONS.zip')
         
         shp['geometry'] = shp.geometry.buffer(0.4)
         shp.crs = "epsg:4326"
