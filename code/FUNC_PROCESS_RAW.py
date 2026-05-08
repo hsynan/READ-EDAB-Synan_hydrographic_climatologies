@@ -291,7 +291,7 @@ def get_glorys_mld():
         7/25: Created function from existing code 
     """
     try: 
-        glorys_df = pd.read_csv(r'/mnt/EDAB_Archive/nadata/PROJECTS/NESCAPES/SOURCE_DATA/GLORYS/glorys_clima_mld.csv')
+        glorys_df = pd.read_csv(os.path.join(base_dir,'SOURCE_DATA','GLORYS','glorys_clima_mld.csv')
         print('Glorys MLD file found locally.')
     except FileNotFoundError:
         print('Glorys MLD file NOT found locally. Using copernicus marine package')
