@@ -2,7 +2,7 @@
 """
 Created on Mon Jul 28 12:54:55 2025
 
-@title: NESCAPES_func_sources_urls
+@title: FUNC_SOURCES_URLS
 @author: haley.synan
 @category:
     FUNCTIONS 
