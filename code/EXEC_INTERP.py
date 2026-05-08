@@ -24,29 +24,18 @@ import pickle
 
 parser = argparse.ArgumentParser()
 parser.add_argument("depth",type=str, help="Options include surface or bottom")
+parser.add_argument("base_dir",type=str, help="Base directory with subfolders for data and code")
 args = parser.parse_args()
 depth = args.depth
-
-loc = socket.gethostname() #'ip-10-171-25-220.ec2.internal'
-if depth == 'surface':
-    if loc.__contains__('NECL'):
-        source_dir = r'W:\nadata\PROJECTS\NESCAPES\SOURCE_DATA'
-        proc_dir = r'W:\nadata\PROJECTS\NESCAPES\PROCESSED_DATA\POINT_MEAN_ABOVEMLD'
-    else:
-        source_dir = r'/mnt/EDAB_Archive/nadata/PROJECTS/NESCAPES/SOURCE_DATA'
-        proc_dir = r'/mnt/EDAB_Archive/nadata/PROJECTS/NESCAPES/PROCESSED_DATA/POINT_MEAN_ABOVEMLD'
-elif depth == 'bottom':
-    if loc.__contains__('NECL'):
-        source_dir = r'W:\nadata\PROJECTS\NESCAPES\SOURCE_DATA'
-        proc_dir = r'W:\nadata\PROJECTS\NESCAPES\PROCESSED_DATA\POINT_MEAN_BOTTOM'
-    else:
-        source_dir = r'/mnt/EDAB_Archive/nadata/PROJECTS/NESCAPES/SOURCE_DATA'
-        proc_dir = r'/mnt/EDAB_Archive/nadata/PROJECTS/NESCAPES/PROCESSED_DATA/POINT_MEAN_BOTTOM'
-    
-    
-#compare_mtime(source_dir, proc_dir) #look for new data since last processing
-                
-
+base_dir = args.base_dir
+if depth =='surface':
+    source_dir = os.path.join(base_dir, 'SOURCE_DATA')
+    proc_dir = os.path.join(base_dir,'PROCESSED_DATA','POINT_MEAN_ABOVEMLD')
+elif depth == 'bottom': 
+    source_dir = os.path.join(base_dir, 'SOURCE_DATA')
+    proc_dir = os.path.join(base_dir,'PROCESSED_DATA','POINT_MEAN_BOTTOM')
+else: 
+    print('No depth bin defined')
 
 # LOAD ALL PROCESSED DATA AND CONCATENATE ON SIMILAR VARIABLE NAMES 
 ls_dir = os.listdir(proc_dir)#get written out files
