@@ -99,8 +99,10 @@ for v in var:
 data = data.rename(columns={'lat':'latitude','lon':'longitude'})
 
 print('Interpolation complete')
-
-data.to_csv(os.path.join(os.path.split(file_path)[0],AGGREGATED_POINT_{depth}_2000_2024.csv'))
+try:
+    data.to_csv(os.path.join(os.path.split(file_path)[0],AGGREGATED_POINT_{depth}_2000_2024.csv'))
+except: 
+    data.to_csv('AGGREGATED_POINT_{depth}_2000_2024.csv')
 print('Interpolation data saved as csv!')
 
 ds = make_nc(data,df,depth=depth)
@@ -215,8 +217,10 @@ ds.SA_unc.attrs['units'] = '0-1'
 ds.SA_unc.attrs['ancillary_variables'] = 'SA, SA_std'
 
 print('metadata added...')
-
-ds.to_netcdf(os.path.join(os.path.split(file_path)[0],'hydrographic_climatology_{depth}_2000_2024.nc'))
+try: 
+    ds.to_netcdf(os.path.join(os.path.split(file_path)[0],'hydrographic_climatology_{depth}_2000_2024.nc'))
+except:
+    ds.to_netcdf('hydrographic_climatology_{depth}_2000_2024.nc')
 print('Interpolation and summary stats saved as netcdf!')
 
         
