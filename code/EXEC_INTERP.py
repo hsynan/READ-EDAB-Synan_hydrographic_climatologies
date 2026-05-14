@@ -21,111 +21,18 @@ import geopandas as gpd
 import socket
 import argparse
 import pickle
+import requests 
+import io
+from datetime import datetime
 
 parser = argparse.ArgumentParser()
 parser.add_argument("depth",type=str, help="Options include surface or bottom")
-parser.add_argument("base_dir",type=str, help="Base directory with subfolders for data and code")
+parser.add_argument("file_path",type=str, help="Absolute path to aggregated point data")
 args = parser.parse_args()
 depth = args.depth
-base_dir = args.base_dir
-if depth =='surface':
-    source_dir = os.path.join(base_dir, 'SOURCE_DATA')
-    proc_dir = os.path.join(base_dir,'PROCESSED_DATA','POINT_MEAN_ABOVEMLD')
-elif depth == 'bottom': 
-    source_dir = os.path.join(base_dir, 'SOURCE_DATA')
-    proc_dir = os.path.join(base_dir,'PROCESSED_DATA','POINT_MEAN_BOTTOM')
-else: 
-    print('No depth bin defined')
+base_dir = args.file_path
 
-# LOAD ALL PROCESSED DATA AND CONCATENATE ON SIMILAR VARIABLE NAMES 
-ls_dir = os.listdir(proc_dir)#get written out files
-files=[]
-#file=[]
-for df in ls_dir:
-    files.append(os.path.join(proc_dir, df))
-    #file.append(pd.read_csv(os.path.join(proc_dir, df)))
-    
-file = sorted(files, key=os.path.getmtime)[:-1] #dont use the one that is currently processing
-file= [item for item in file if '.csv' in item]
-
-files = []
-for df in file:
-    files.append(pd.read_csv(df))
-df = pd.concat(files,join='inner', ignore_index=True) #concatenate on similar columns
-df = df[(df.temperature>0) & (df.CT>0) & (df.SA>0) & (df.salinity>0) & (df.salinity<38)] #clean data
-df = df[(df.year >= 2000) & (df.year<=2024)]
-###df = pd.read_csv(r'C:\Users\haley.synan\Documents\DATA\above_mld_within_2std.csv')
-
-
-
-#REMOVE DUPLICATES
-#df = df.drop_duplicates(subset=['latitude','longitude','month','CT','SA']).reset_index()
-df = df.drop_duplicates(subset=['latitude','longitude','time','temperature','salinity'])
-#df = df[(df.SA<40) & (df.SA>5) & (df.CT>0) & (df.CT<40)] #clean
-
-#REMOVE OUTLIERS 
-#get grid CENTERS 
-lat_centers = np.arange(34.5, 46.5, 1)
-lon_centers = np.arange(-76.5, -62.5, 1)
-lon_grid, lat_grid = np.meshgrid(lon_centers, lat_centers)
-is_land = globe.is_land(lat_grid, lon_grid)
-# Dilate the land mask to find adjacent water cells
-dilated_land = binary_dilation(is_land)
-border_mask = dilated_land & ~is_land #border mask = true when borders land
-out=[]
-for x in range(1,13):
-    sub=df[df.month==x]
-    sub=outlier_sum_stats(sub,border_mask,var='SA')
-    sub=outlier_sum_stats(sub,border_mask, var='CT')
-    sub['is_outlier'] = (
-            (sub['CT'] > sub['cell_mean_CT'] + sub['threshold'] * sub['cell_std_CT']) | 
-            (sub['CT'] < sub['cell_mean_CT'] - sub['threshold'] * sub['cell_std_CT']) |
-            (sub['SA'] > sub['cell_mean_SA'] + sub['threshold'] * sub['cell_std_SA']) | 
-            (sub['SA'] < sub['cell_mean_SA'] - sub['threshold'] * sub['cell_std_SA'])
-        )
-    out.append(sub[sub['is_outlier']])
-print(f'{len(pd.concat(out))} profiles removed during outlier detection')
-df_cleaned=df.drop(pd.concat(out).index)   
-
-#manually remove salinity anomalies from offshelf region
-#open shapefile for sargasso
-shp = gpd.read_file(os.path.join(source_dir,'SHAPEFILES','gssw_edgestudyarea.shp'))
-gdf = gpd.GeoDataFrame(
-    df_cleaned, geometry=gpd.points_from_xy(df_cleaned.longitude, df_cleaned.latitude), crs="EPSG:4326")
-#clip
-in_shp = gpd.clip(gdf,shp)
-#get values in shapefile
-out = df_cleaned[df_cleaned.isin(in_shp)] 
-anom=out[out.min_prof_sal<30] #filter anomalies
-df_cleaned = df_cleaned.drop(anom.index) #apply to dataset
-shp = gpd.read_file(os.path.join(source_dir,'SHAPEFILES','gsmeanpath.shp'))
-in_shp = gpd.clip(gdf,shp)
-out = df_cleaned[df_cleaned.isin(in_shp)]
-anom=out[out.min_prof_sal<30]
-df_cleaned = df_cleaned.drop(anom.index) 
-
-if depth =='bottom':
-    df_pam = pd.read_csv(os.path.join(proc_dir,'PROCESSED_MEAN_BOTTOM_PAM_PAB_NEFSC_temperature_2018-2024.csv'))
-    df_cleaned = pd.concat([df_cleaned,df_pam],join='inner', ignore_index=True) #
-    print('PAM added to bottom temps')
-    
-
-#SAVE OUT CONCATENATED DATAFRAME (point dataset for DOI)
-if os.path.isdir(os.path.join(proc_dir.rsplit('\\',1)[0],'ALL_POINT_MEAN_ABOVEMLD'))==True:
-    df_cleaned.to_csv(os.path.join(proc_dir.rsplit('\\',1)[0],'ALL_POINT_MEAN_ABOVEMLD','PROCESSED_MEAN_ABOVEMLD_ALL.csv'))
-    print('Concatenated point file saved successfully!')
-else: 
-    os.mkdir(os.path.join(proc_dir.rsplit('\\',1)[0],'ALL_POINT_MEAN_ABOVEMLD'))
-    df_cleaned.to_csv(os.path.join(proc_dir.rsplit('\\',1)[0],'ALL_POINT_MEAN_ABOVEMLD','PROCESSED_MEAN_ABOVEMLD_ALL.csv'))
-    print('Concatenated point file saved successfully!')
-    
-#READ THIS to read in already concatenated data
-#df = pd.read_csv(os.path.join(proc_dir,'ALL_POINT_MEAN_ABOVEMLD','PROCESSED_MEAN_ABOVEMLD_ALL_nooutliers_medianfilt_clean.csv'))   
-#df=df[df.source!='sumd'] #REMOVE SUMD UNTIL DATES ARE FIXED
-
-# ADD MEDIAN FILT FOR CLEANING????
-
-df=df_cleaned
+df=pd.read_csv(file_path)
 #INTERPOLATE
 # GROUP DATA BY MONTH 
 al = []
@@ -192,108 +99,125 @@ for v in var:
 data = data.rename(columns={'lat':'latitude','lon':'longitude'})
 
 print('Interpolation complete')
-try: 
-    data.to_csv(os.path.join(r'/mnt/EDAB_Archive/nadata/PROJECTS/NESCAPES/PROCESSED_DATA','final',f'formatted_equigrid_all_finer{depth}.csv'))
-except:
-    data.to_csv(os.path.join(r'W:\nadata\PROJECTS\NESCAPES\PROCESSED_DATA','final',f'formatted_equigrid_all_finer{depth}.csv'))
-    
+
+data.to_csv(os.path.join(os.path.split(file_path)[0],AGGREGATED_POINT_{depth}_2000_2024.csv'))
 print('Interpolation data saved as csv!')
 
-import os
-
-
-# Define the folder and filename
-#folder_name = r'/mnt/EDAB_Archive/nadata/PROJECTS/NESCAPES/PROCESSED_DATA/final'
-#file_name = 'ui.pkl'
-
-# Ensure the directory exists (optional, but recommended)
-#if not os.path.exists(folder_name):
-#    os.makedirs(folder_name)
-
-# Construct the full file path using os.path.join
-#file_path = os.path.join(folder_name, file_name)
-
-# Save the object to the specified path
-#with open(file_path, 'wb') as file:
-#    pickle.dump(ui, file)
-
-#print(f"Object saved at: {os.path.abspath(file_path)}")
-
-
-
-
 ds = make_nc(data,df,depth=depth)
-#se = ds.CT_std/np.sqrt(ds.num_obs)
-#se = (se - se.min()) / (se.max() - se.min())
-#ds = make_nc(data,df,depth='bottom')
-#ds['ui']=xr.DataArray(data=np.stack(ui[:12]),dims=('month','longitude','latitude'),coords={'month':range(1,13),'latitude':data.latitude.unique(),'longitude':data.longitude.unique()})
-se = ds.CT_std/np.sqrt(ds.num_obs)
-ds['se'] = ds.CT_std/np.sqrt(ds.num_obs)
+ds['CT_se'] = ds.CT_std/np.sqrt(ds.num_obs)
+ds['SA_se'] = ds.SA_std/np.sqrt(ds.num_obs)
 data_density =xr.DataArray(np.stack(dd[:12]), coords = {"longitude":data.longitude.unique(),'latitude':data.latitude.unique()}, dims=["month","longitude","latitude"],name='data_density')
-ds['data_density_CT'] = data_density
-#tot=np.sqrt(se**2 + ds.ui**2)
-#ds['u_final'] = (tot - tot.min()) / (tot.max() - tot.min())
-try: 
-    ds.to_netcdf(os.path.join(r'/mnt/EDAB_Archive/nadata/PROJECTS/NESCAPES/PROCESSED_DATA','final',f'formatted_equigrid_all_finer{depth}.nc'))
-except:
-    ds.to_netcdf(os.path.join(r'W:\nadata\PROJECTS\NESCAPES\PROCESSED_DATA','final',f'formatted_equigrid_all_finer{depth}.nc'))
+ds['data_density'] = data_density
+gdf = gpd.read_file(r'/mnt/EDAB_Archive/nadata/PROJECTS/NESCAPES/SOURCE_DATA/SHAPEFILES/Atlantic_estuary_shore_dist/Atlantic_estuary_shore_dist.shp')
+gdf= gdf.to_crs("EPSG:4326") #reproject to match
+
+#remove data from estuaries 
+ds.rio.write_crs("EPSG:4326", inplace=True)
+ds = ds.rio.clip(
+    gdf.geometry, 
+    gdf.crs, 
+    invert=True, 
+    drop=True
+)
+
+#calculate uncertainty 
+da_reshaped = ds.data_density.transpose(..., "latitude", "longitude")
+err = calculate_continuous_error(ds.CT_std, da_reshaped) #standard error / 
+err = normalize_climatology_errors(err)
+ds['CT_unc'] = (('month', 'latitude', 'longitude'), err)
+err = calculate_continuous_error(ds.SA_std, da_reshaped) #standard error / 
+err = normalize_climatology_errors(err)
+ds['SA_unc'] = (('month', 'latitude', 'longitude'), err)
+
+if depth == 'bottom': 
+    shp = gpd.read_file('https://github.com/hsynan/READ-EDAB-Synan_hydrographic_climatologies/raw/refs/heads/main/data/shapefiles/NES_5REGIONS.zip')
+    shp['geometry'] = shp.geometry.buffer(0.4)
+    shp.crs = "epsg:4326"
+    shp = shp.to_crs(ds.rio.crs)
+    ds = ds.rio.clip(shp.geometry.apply(mapping), ds.rio.crs, drop=True)
+        
+
+url='https://github.com/hsynan/READ-EDAB-Synan_hydrographic_climatologies/raw/refs/heads/main/data/grid/GRID_4km_sinusoidal.nc'
+response= requests.get(url)
+grid = xr.open_dataset(io.BytesIO(response.content))
+ds = ds.regrid.linear(grid)
+ds=ds.sel(latitude=slice(46,34), longitude=slice(-77,-62))
+print('Successfully regridded...')
+
+#add metadata
+ds.attrs['cdm_data_type'] = 'Grid'
+ds.attrs['creator_email'] = 'edab.data@noaa.gov'
+ds.attrs['creator_name'] = 'Ecosystem Dynamics and Assesment Branch'
+ds.attrs['creator_url'] = 'https://www.fisheries.noaa.gov/contact-directory/northeast-ecosystem-dynamics-assessment'
+ds.attrs['geospatial_lat_max'] = float(ds.latitude.max().values)
+ds.attrs['geospatial_lat_min'] = float(ds.latitude.min().values)
+ds.attrs['geospatial_lat_resolution'] =.04166666666666666666
+ds.attrs['geospatial_lat_units'] = 'decimal degrees north'
+ds.attrs['geospatial_lon_max'] = float(ds.longitude.max().values)
+ds.attrs['geospatial_lon_min'] = float(ds.longitude.min().values)
+ds.attrs['geospatial_lon_resolution'] =.04166666666666666666
+ds.attrs['geospatial_lon_units'] = 'decimal degrees east'
+ds.attrs['geospatial_vertical_max'] = 0.0
+ds.attrs['geospatial_vertical_min']=0.0
+ds.attrs['keywords'] = 'hydrographic, climatology, temperature, salinity, in situ'
+ds.attrs['creation_date'] = str(pd.to_datetime(datetime.now()))
+ds.attrs['start_date'] = '2000-01-01'
+ds.attrs['end_date'] = '2024-12-31'
+
+
+ds.CT.attrs['long_name'] = 'Climatological conservative temperature for the reference years of 2000 through 2024 generated using interpolation of hydrographic point data'
+ds.CT.attrs['depth_bin'] = f'{depth}' 
+ds.CT.attrs['units'] = 'Degrees celsius'
+ds.CT.attrs['ancillary_variables'] = 'CT_std, CT_unc'
+
+ds.CT_std.attrs['long_name'] = 'Standard deviation of the point temperature data per grid cell (pre-interpolation)'
+ds.CT_std.attrs['depth_bin'] = f'{depth}' 
+ds.CT_std.attrs['units'] = 'Degrees celsius'
+ds.CT_std.attrs['ancillary_variables'] = 'CT, CT_unc'
+
+ds.SA.attrs['long_name'] = 'Climatological absolute salinity for the reference years of 2000 through 2024 generated using interpolation of hydrographic point data'
+ds.SA.attrs['depth_bin'] = f'{depth}' 
+ds.SA.attrs['units'] = 'Grams per kilogram'
+ds.SA.attrs['ancillary_variables'] = 'SA_std, SA_unc'
+
+ds.SA_std.attrs['long_name'] = 'Standard deviation of the point salinity data per grid cell (pre-interpolation)'
+ds.SA_std.attrs['depth_bin'] = f'{depth}' 
+ds.SA_std.attrs['units'] = 'Grams per kilogram'
+ds.SA_std.attrs['ancillary_variables'] = 'SA, SA_unc'
+
+ds.num_obs.attrs['long_name'] = 'Number of point observations per grid cell (pre-interpolation)'
+ds.num_obs.attrs['depth_bin'] = f'{depth}' 
+ds.num_obs.attrs['units'] = 'Grams per kilogram'
+ds.num_obs.attrs['ancillary_variables'] = 'SA, CT'
+
+ds.CT_se.attrs['long_name'] = 'Standard error of conservative temperature'
+ds.CT_se.attrs['depth_bin'] = f'{depth}' 
+ds.CT_se.attrs['units'] = 'Degrees celcius'
+ds.CT_se.attrs['ancillary_variables'] = 'CT, CT_unc'
+
+ds.SA_se.attrs['long_name'] = 'Standard error of absolute slainity'
+ds.SA_se.attrs['depth_bin'] = f'{depth}' 
+ds.SA_se.attrs['units'] = 'Grams per kilogram'
+ds.SA_se.attrs['ancillary_variables'] = 'SA, SA_unc'
+
+ds.data_density.attrs['long_name'] = 'Sum of unnormalized weights, which tells you how far a grid cell actually is from in situ data'
+ds.data_density.attrs['depth_bin'] = f'{depth}' 
+ds.data_density.attrs['units'] = ''
+
+ds.CT_unc.attrs['long_name'] = 'Uncertainty in interpolated climatological value per grid cell'
+ds.CT_unc.attrs['depth_bin'] = f'{depth}' 
+ds.CT_unc.attrs['units'] = '0-1'
+ds.CT_unc.attrs['ancillary_variables'] = 'CT, CT_std'
+
+ds.SA_unc.attrs['long_name'] = 'Uncertainty in interpolated climatological value per grid cell'
+ds.SA_unc.attrs['depth_bin'] = f'{depth}' 
+ds.SA_unc.attrs['units'] = '0-1'
+ds.SA_unc.attrs['ancillary_variables'] = 'SA, SA_std'
+
+print('metadata added...')
+
+ds.to_netcdf(os.path.join(os.path.split(file_path)[0],'hydrographic_climatology_{depth}_2000_2024.nc'))
 print('Interpolation and summary stats saved as netcdf!')
-
-
-
-
-# ADD VARIABLES 
-print('Adding other input variables...')
-#BATHYMETRY 
-url=''.join(['https://hfr.marine.rutgers.edu/erddap/griddap/bathymetry_srtm15_v24.nc?z%5B(34):1:(46)%5D%5B(-77):1:(-63)%5D'])
-file = os.path.join(proc_dir,'srtm3.nc')
-urllib.request.urlretrieve(url,file) #download data
-srtm = xr.open_dataset(file)
-var ='z'
-data = match_nearest(data, srtm, 'z','STRM_bathymetry')
-print('Bathymetry added successfully.')
-
-month = ['x','January','February','March','April','May','June','July','August','September','October','November','December']
-#match chlorophyll 
-xr_chla = xr.open_dataset(r'/mnt/EDAB_Archive/nadata/PROJECTS/NESCAPES/PROCESSED_DATA/CLIMATOLOGIES.nc')
-xr_chla = xr_chla.rename({"lat": "latitude", "lon": "longitude"})
-land_mask=globe.is_land(np.meshgrid(xr_chla.longitude,xr_chla.latitude)[1], np.meshgrid(xr_chla.longitude,xr_chla.latitude)[0])
-xr_chla['land_mask']= (('latitude','longitude'),land_mask) #add to dataset
-masked = xr_chla.where(xr_chla.land_mask==False, drop=True)
-#mask estuaries 
-
-masked = masked.to_dataframe().dropna().reset_index()
-months= ['x','January','February','March','April','May','June','July','August','September','October','November','December']
-for x in range(1,13):
-    chla= xr_chla.sel(month=x)
-    data = match_nearest(data, chla, 'chlor_a','chla'+month[x])
-
-    chla = masked[masked.month==x].reset_index()
-    data = find_closest_pairs(data,chla,'chlor_a','latitude','longitude',months[x])
-
-#for x in range(1,13):
-#    chla = masked[masked.month==x].reset_index()
-#    data = find_closest_pairs(data,chla,'chlor_a','latitude','longitude',months[x])
-    
-
-print('Chlorophyll added successfully')
-data.to_csv(os.path.join(r'/mnt/EDAB_Archive/nadata/PROJECTS/NESCAPES/PROCESSED_DATA','final','formatted_equigrid_all_finer.csv'))
-print("Formatted dataset saved. Ready to input to model!")
-
-
-#interpolation, removing estuaries/buffering from coastline
-#add variables (bathymetry and chla)
-#save out this dataframe as a gridded dataset for DOI
-#remove duplicates
-#check alignment
-
-
-
-
-
-#SINCE DATA DENSITY IS DIFFERENT ... on shore and offshore weights????
-
-
 
         
     
