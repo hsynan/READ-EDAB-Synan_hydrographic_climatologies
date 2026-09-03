@@ -1,0 +1,955 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Data sources &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'data_sources';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Data processing" href="processing_data.html" />
+    <link rel="prev" title="Introduction" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="My sample book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Data sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="processing_data.html">Data processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interpolation.html">Interpolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manuscript_figures.html">Code used to create figures in “An in situ, interpolated hydrographic climatology of the surface Northwest Atlantic Ocean for 2000-2024”</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supplementary_figures.html">Supplementary figures</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdata_sources.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/data_sources.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Data sources</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#argo">Argo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bco-dmo">BCO-DMO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cfrf-whoi-shelf-research-fleet">CFRF/WHOI Shelf Research Fleet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ecomon">EcoMon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#department-of-fisheries-oceanography-canada">Department of Fisheries Oceanography Canada</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fishing-industry-shared-bottom-oceanographic-timeseries-fishbot">Fishing Industry Shared Bottom Oceanographic Timeseries (FIShBOT)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maine-department-of-marine-resources">Maine Department of Marine Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neamap">NEAMAP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neracoos">NERACOOS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maracoos">MARACOOS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wod">WOD</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pioneer-array">Pioneer Array</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seabass">SeaBASS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#surface-underway-marine-database-sumd">Surface Underway Marine Database (SUMD)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nefsc-passive-acoustics-branch-pab">NEFSC Passive Acoustics Branch (PAB)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-set-up-a-new-data-source-for-processing">How to set up a new data source for processing</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="data-sources">
+<h1>Data sources<a class="headerlink" href="#data-sources" title="Link to this heading">#</a></h1>
+<p>In the data paper, we are standardizing and aggregating data from multiple sources. The data sources used in creating the interpolated dataset are described below.</p>
+<section id="argo">
+<h2>Argo<a class="headerlink" href="#argo" title="Link to this heading">#</a></h2>
+<p><strong>Location:</strong> ERDDAP <br>
+<strong>Link:</strong> <a class="reference external" href="https://erddap.ifremer.fr/erddap/tabledap/ArgoFloats.html">https://erddap.ifremer.fr/erddap/tabledap/ArgoFloats.html</a> <br>
+<strong>Filetype:</strong> CSV <br>
+<strong>Profile type:</strong> Vertical <br>
+<strong>DOI:</strong> 10.17882/42182 <br>
+<strong>Citation:</strong> <br>
+ Argo. (2025). Argo float measurements [Data set]. Ifremer ERDDAP. Retrieved August 20, 2025, from <a class="reference external" href="https://erddap.ifremer.fr/erddap/tabledap/ArgoFloats.csv?fileNumber%2Cdata_type%2Cformat_version%2Chandbook_version%2Creference_date_time%2Cdate_creation%2Cdate_update%2Cplatform_number%2Cproject_name%2Cpi_name%2Ccycle_number%2Cdirection%2Cdata_center%2Cdc_reference%2Cdata_state_indicator%2Cdata_mode%2Cplatform_type%2Cfloat_serial_no%2Cfirmware_version%2Cwmo_inst_type%2Ctime%2Ctime_qc%2Ctime_location%2Clatitude%2Clongitude%2Cposition_qc%2Cpositioning_system%2Cprofile_pres_qc%2Cprofile_temp_qc%2Cprofile_psal_qc%2Cvertical_sampling_scheme%2Cconfig_mission_number%2Cpres%2Cpres_qc%2Cpres_adjusted%2Cpres_adjusted_qc%2Cpres_adjusted_error%2Ctemp%2Ctemp_qc%2Ctemp_adjusted%2Ctemp_adjusted_qc%2Ctemp_adjusted_error%2Cpsal%2Cpsal_qc%2Cpsal_adjusted%2Cpsal_adjusted_qc%2Cpsal_adjusted_error%2Cdoxy%2Cdoxy_qc%2Ctemp_doxy%2Ctemp_doxy_qc%2Cmolar_doxy%2Cmolar_doxy_qc%2Cturbidity%2Cturbidity_qc%2Cchla%2Cchla_qc%2Cnitrate%2Cnitrate_qc&amp;amp;time%3E=2000-01-01T00%3A00%3A00Z&amp;amp;time%3C=2024-12-31T23%3A23%3A20Z">https://erddap.ifremer.fr/erddap/tabledap/ArgoFloats.csv?fileNumber%2Cdata_type%2Cformat_version%2Chandbook_version%2Creference_date_time%2Cdate_creation%2Cdate_update%2Cplatform_number%2Cproject_name%2Cpi_name%2Ccycle_number%2Cdirection%2Cdata_center%2Cdc_reference%2Cdata_state_indicator%2Cdata_mode%2Cplatform_type%2Cfloat_serial_no%2Cfirmware_version%2Cwmo_inst_type%2Ctime%2Ctime_qc%2Ctime_location%2Clatitude%2Clongitude%2Cposition_qc%2Cpositioning_system%2Cprofile_pres_qc%2Cprofile_temp_qc%2Cprofile_psal_qc%2Cvertical_sampling_scheme%2Cconfig_mission_number%2Cpres%2Cpres_qc%2Cpres_adjusted%2Cpres_adjusted_qc%2Cpres_adjusted_error%2Ctemp%2Ctemp_qc%2Ctemp_adjusted%2Ctemp_adjusted_qc%2Ctemp_adjusted_error%2Cpsal%2Cpsal_qc%2Cpsal_adjusted%2Cpsal_adjusted_qc%2Cpsal_adjusted_error%2Cdoxy%2Cdoxy_qc%2Ctemp_doxy%2Ctemp_doxy_qc%2Cmolar_doxy%2Cmolar_doxy_qc%2Cturbidity%2Cturbidity_qc%2Cchla%2Cchla_qc%2Cnitrate%2Cnitrate_qc&amp;time&gt;=2000-01-01T00%3A00%3A00Z&amp;time&lt;=2024-12-31T23%3A23%3A20Z</a></p>
+</section>
+<section id="bco-dmo">
+<h2>BCO-DMO<a class="headerlink" href="#bco-dmo" title="Link to this heading">#</a></h2>
+<p><strong>Location:</strong> ERDDAP <br>
+<strong>Link:</strong>  <a class="reference external" href="https://erddap.bco-dmo.org/erddap/tabledap/bcodmo_dataset_%7Bid%7D">https://erddap.bco-dmo.org/erddap/tabledap/bcodmo_dataset_{id}</a> <br>
+<strong>Dataset IDs:</strong></p>
+<ul class="simple">
+<li><p>916411_v2</p></li>
+<li><p>731502</p></li>
+<li><p>614744</p></li>
+<li><p>807119
+<br>
+<strong>Filetype:</strong> CSV <br>
+<strong>Profile type:</strong> Vertical <br>
+<strong>DOI:</strong>  <br>
+<strong>Citation:</strong> <br>
+ BCO-DMO. (2026). [AE1913 CTD data] - CTD profiles from R/V Atlantic Explorer cruise AE1913 in
+the Sargasso Sea in June of 2019 (Collaborative Research: Direct
+Characterization of Adaptive Nutrient Stress Responses in the Sargasso Sea
+using Protein Biomarkers and a Biogeochemical AUV) [Data set]. BCO-DMO ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://erddap.bco-dmo.org/erddap/tabledap/bcodmo_dataset_916411_v2.csv">https://erddap.bco-dmo.org/erddap/tabledap/bcodmo_dataset_916411_v2.csv</a> <br>
+ BCO-DMO. (2026). [Binned CTD data] - Temperature and salinity data from binned CTD data
+collected during R/V Hugh R. Sharp cruise HRS1414 in the Mid and South-Atlantic
+Bight from July to August of 2014 (DANCE project) (Collaborative Research:
+Impacts of atmospheric nitrogen deposition on the biogeochemistry of
+oligotrophic coastal waters) [Data set]. BCO-DMO ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://erddap.bco-dmo.org/erddap/tabledap/bcodmo_dataset_731502.csv">https://erddap.bco-dmo.org/erddap/tabledap/bcodmo_dataset_731502.csv</a> <br>
+ BCO-DMO. (2026). [CTD - Downcasts] - CTD profile data from 2014-2015 R/V C-HAWK MuLTI-2 project
+cruises in the Gulf of Maine, Coastal eastern Maine, from Frenchman Bay to the
+Canadian border (An integrated theoretical and empirical approach to across-
+shelf mixing and connectivity of mussel populations) [Data set]. BCO-DMO ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://erddap.bco-dmo.org/erddap/tabledap/bcodmo_dataset_614744.csv">https://erddap.bco-dmo.org/erddap/tabledap/bcodmo_dataset_614744.csv</a> <br>
+ BCO-DMO. (2026). [CTD AR29, RB1904 and TN3638] - CTD casts from the SPIROPA project from R/V
+Neil Armstrong cruise AR29, Ronald H. Brown cruise RB1904 and R/V Thomas G.
+Thompson cruise TN368 to the New England Shelfbreak in 2018 and
+2019 (Collaborative Research: Shelfbreak Frontal Dynamics: Mechanisms of
+Upwelling, Net Community Production, and Ecological Implications) [Data set]. BCO-DMO ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://erddap.bco-dmo.org/erddap/tabledap/bcodmo_dataset_807119.csv">https://erddap.bco-dmo.org/erddap/tabledap/bcodmo_dataset_807119.csv</a> <br></p></li>
+</ul>
+</section>
+<section id="cfrf-whoi-shelf-research-fleet">
+<h2>CFRF/WHOI Shelf Research Fleet<a class="headerlink" href="#cfrf-whoi-shelf-research-fleet" title="Link to this heading">#</a></h2>
+<p><strong>Location:</strong> ERDDAP <br>
+<strong>Link:</strong>  <a class="reference external" href="https://erddap.ondeckdata.com/erddap/tabledap/shelf_fleet_profiles_full_resolution.html">https://erddap.ondeckdata.com/erddap/tabledap/shelf_fleet_profiles_full_resolution.html</a> <br>
+<strong>Filetype:</strong> CSV <br>
+<strong>Profile type:</strong> Vertical <br>
+<strong>DOI:</strong>  NA <br>
+<strong>Citation:</strong>
+ Commercial Fisheries Research Foundation | Woods Hole Oceanographic Institute. (2026). Shelf fleet profiles full resolution [Data set]. On Deck Data ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://erddap.ondeckdata.com/erddap/tabledap/shelf_fleet_profiles_full_resolution.csv">https://erddap.ondeckdata.com/erddap/tabledap/shelf_fleet_profiles_full_resolution.csv</a>
+<br></p>
+</section>
+<section id="ecomon">
+<h2>EcoMon<a class="headerlink" href="#ecomon" title="Link to this heading">#</a></h2>
+<p><strong>Location:</strong> ERDDAP <br>
+<strong>Link:</strong>  <a class="reference external" href="https://comet.nefsc.noaa.gov/erddap/tabledap/ocdbs_v_erddap1.html">https://comet.nefsc.noaa.gov/erddap/tabledap/ocdbs_v_erddap1.html</a> <br>
+<strong>Filetype:</strong> CSV <br>
+<strong>Profile type:</strong>  Vertical <br>
+<strong>DOI:</strong> NA <br>
+<strong>Citation:</strong> <br>
+ NOAA | NMFS | NEFSC. (2025).  Hydrographic | NEFSC | Hydrographic Monitoring Program | Temperature,
+salinity, dissolved oxygen, PAR and fluorescence profiles | Northeast U.S.
+Shelf | 1977-present  [Data set]. On Deck Data ERDDAP. Retrieved August 20, 2025, from <a class="reference external" href="https://comet.nefsc.noaa.gov/erddap/tabledap/ocdbs_v_erddap1.csv">https://comet.nefsc.noaa.gov/erddap/tabledap/ocdbs_v_erddap1.csv</a>
+<br></p>
+</section>
+<section id="department-of-fisheries-oceanography-canada">
+<h2>Department of Fisheries Oceanography Canada<a class="headerlink" href="#department-of-fisheries-oceanography-canada" title="Link to this heading">#</a></h2>
+<p><strong>Location:</strong> ERDDAP <br>
+<strong>Link:</strong> <a class="reference external" href="https://cioosatlantic.ca/erddap/tabledap/">https://cioosatlantic.ca/erddap/tabledap/</a> <br>
+<strong>Dataset IDs:</strong> <br>
+*(V) = vertical profile type, (B) = buoy profile type</p>
+<ul class="simple">
+<li><p>bio_atlantic_zone_off_shelf_monitoring_program_ctd (V)</p></li>
+<li><p>bio_historical_offshore_international_ctd (V)</p></li>
+<li><p>nafc_multispecies_ctd_profiles (V)</p></li>
+<li><p>new_bb1_hyp_level2_binned (V)</p></li>
+<li><p>bio_atlantic_zone_monitoring_program_ctd_6d26_7b70_c538 (V)</p></li>
+<li><p>bio_maritimes_region_ecosystem_survey_ctd (V)</p></li>
+<li><p>bio_historical_coastal_moored_ctd (B)</p></li>
+<li><p>bio_rapid_moored_ctd (B)</p></li>
+<li><p>bio_historical_offshore_moored_ctd (B)</p></li>
+<li><p>bio_ocean_tracking_network_moored_ctd (B)</p></li>
+<li><p>bio_cetacean_moored_ctd (B)</p></li>
+</ul>
+<p><strong>Filetype:</strong> CSV <br>
+<strong>Profile type:</strong> Vertical and buoy <br>
+<strong>DOI:</strong> NA <br>
+<strong>Citation:</strong> <br>
+ Regional Association of the Candadian Integrated Ocean Observing System. (2026). Maritimes Region Atlantic Zone Off-Shelf Monitoring Program (AZOMP) Rosette
+Vertical Profiles [Data set]. CIOOS Atlantic ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://cioosatlantic.ca/erddap/tabledap/bio_atlantic_zone_off_shelf_monitoring_program_ctd.csv">https://cioosatlantic.ca/erddap/tabledap/bio_atlantic_zone_off_shelf_monitoring_program_ctd.csv</a> <br>
+ Regional Association of the Candadian Integrated Ocean Observing System. (2026). Maritimes Region Historical offshore and international missions Rosette
+Vertical Profiles [Data set]. CIOOS Atlantic ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://cioosatlantic.ca/erddap/tabledap/bio_historical_offshore_international_ctd.csv">https://cioosatlantic.ca/erddap/tabledap/bio_historical_offshore_international_ctd.csv</a> <br>
+ Regional Association of the Candadian Integrated Ocean Observing System. (2026). Newfoundland and Labrador Region Multi-Species Survey Trawl-Mounted CTD
+Profiles [Data set]. CIOOS Atlantic ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://cioosatlantic.ca/erddap/tabledap/nafc_multispecies_ctd_profiles.csv">https://cioosatlantic.ca/erddap/tabledap/nafc_multispecies_ctd_profiles.csv</a> <br>
+ Regional Association of the Candadian Integrated Ocean Observing System. (2026). Maritimes Region Ecosystem Survey Rosette Vertical Profiles [Data set]. CIOOS Atlantic ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://cioosatlantic.ca/erddap/tabledap/bio_maritimes_region_ecosystem_survey_ctd.csv">https://cioosatlantic.ca/erddap/tabledap/bio_maritimes_region_ecosystem_survey_ctd.csv</a> <br>
+ Regional Association of the Candadian Integrated Ocean Observing System. (2026). Maritimes Region Historical Coastal Moored Time Series Data [Data set]. CIOOS Atlantic ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://cioosatlantic.ca/erddap/tabledap/bio_historical_coastal_moored_ctd.csv">https://cioosatlantic.ca/erddap/tabledap/bio_historical_coastal_moored_ctd.csv</a> <br>
+ Regional Association of the Candadian Integrated Ocean Observing System. (2026). Maritimes Region Historical RAPID Climate Change Program Moored Time Series
+Data [Data set]. CIOOS Atlantic ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://cioosatlantic.ca/erddap/tabledap/bio_rapid_moored_ctd.csv">https://cioosatlantic.ca/erddap/tabledap/bio_rapid_moored_ctd.csv</a> <br>
+ Regional Association of the Candadian Integrated Ocean Observing System. (2026). Maritimes Region Historical Offshore Moored Time Series Data [Data set]. CIOOS Atlantic ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://cioosatlantic.ca/erddap/tabledap/bio_historical_offshore_moored_ctd.csv">https://cioosatlantic.ca/erddap/tabledap/bio_historical_offshore_moored_ctd.csv</a> <br>
+ Regional Association of the Candadian Integrated Ocean Observing System. (2026). Maritimes Region Cetacean Monitoring Program MicroCAT conductivity,
+temperature and pressure time series data [Data set]. CIOOS Atlantic ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://cioosatlantic.ca/erddap/tabledap/bio_cetacean_moored_ctd.csv">https://cioosatlantic.ca/erddap/tabledap/bio_cetacean_moored_ctd.csv</a> <br>
+ Regional Association of the Candadian Integrated Ocean Observing System. (2026). Maritimes Region Historical Ocean Tracking Network (OTN) Project Moored Time
+Series Data [Data set]. CIOOS Atlantic ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://cioosatlantic.ca/erddap/tabledap/bio_ocean_tracking_network_moored_ctd.csv">https://cioosatlantic.ca/erddap/tabledap/bio_ocean_tracking_network_moored_ctd.csv</a> <br>
+<br></p>
+</section>
+<section id="fishing-industry-shared-bottom-oceanographic-timeseries-fishbot">
+<h2>Fishing Industry Shared Bottom Oceanographic Timeseries (FIShBOT)<a class="headerlink" href="#fishing-industry-shared-bottom-oceanographic-timeseries-fishbot" title="Link to this heading">#</a></h2>
+<p><strong>Location:</strong> ERDDAP
+<strong>Link:</strong>
+ Current version: <a class="reference external" href="https://erddap.ondeckdata.com/erddap/tabledap/fishbot_realtime.html">https://erddap.ondeckdata.com/erddap/tabledap/fishbot_realtime.html</a>
+ Archived 20 m bottom version: <a class="reference external" href="https://zenodo.org/records/22168636">https://zenodo.org/records/22168636</a>
+<strong>Filetype:</strong> CSV <br>
+<strong>Profile type:</strong> Varied. Data is aggregated from both fisheries dependent and fisheries independent data. Profile types include vertical profiles, fishing trawls, gliders, and flowthrough data.
+<strong>DOI:</strong> <a class="reference external" href="https://doi.org/10.5281/zenodo.22168636">https://doi.org/10.5281/zenodo.22168636</a>
+<strong>Citation:</strong>
+ Stoltz L., Maynard, G., Morin, M., Salois, S. (2026). FIShBOT Archive 2026-08-30 (V1) [Data set]. Zenodo. <a class="reference external" href="https://doi.org/10.5281/zenodo.22168636">https://doi.org/10.5281/zenodo.22168636</a>
+ Linus Stoltz, George Maynard, Michael Morin, Sarah Salois. 2025. Production
+of an in-situ bottom water temperature product for the northeast US
+continental shelf using oceanographic data collected by fishing vessels . US
+Dept Commer Northeast Fish Sci Cent Tech Memo 341. 20 p</p>
+<br>
+</section>
+<section id="maine-department-of-marine-resources">
+<h2>Maine Department of Marine Resources<a class="headerlink" href="#maine-department-of-marine-resources" title="Link to this heading">#</a></h2>
+<p><strong>Location:</strong> Maine DMR Data Portal <br>
+<strong>Link:</strong>  <a class="reference external" href="https://mainedmr.shinyapps.io/MaineDMR_Trawl_Survey_Portal/">https://mainedmr.shinyapps.io/MaineDMR_Trawl_Survey_Portal/</a> <strong>Requires an account</strong> <br>
+<strong>Filetype:</strong> CSV <br>
+<strong>Profile type:</strong> Vertical <br>
+<strong>DOI:</strong> NA <br>
+<strong>Citation:</strong>
+ Maine - New Hampshire Inshore Trawl Survey. (2025). Retrieved July 25, 2025, from <a class="reference external" href="https://mainedmr.shinyapps.io/MaineDMR_Trawl_Survey_Portal/">https://mainedmr.shinyapps.io/MaineDMR_Trawl_Survey_Portal/</a> <br>
+<br></p>
+</section>
+<section id="neamap">
+<h2>NEAMAP<a class="headerlink" href="#neamap" title="Link to this heading">#</a></h2>
+<p><strong>Location:</strong> By request only <br>
+<strong>Link:</strong> <a class="reference external" href="https://www.neamap.net/neamap-nearshore-trawl/">https://www.neamap.net/neamap-nearshore-trawl/</a> <br>
+<strong>Filetype:</strong> CSV <br>
+<strong>Profile type:</strong> Vertical <br>
+<strong>DOI:</strong> NA <br>
+<strong>Citation:</strong> <br>
+ Virginia Institute of Marine Science’s Multispecies Research Group. (2024). NEAMAP Nearshore Trawl Survey. Accessed November 26, 2024.
+ Atlantic States Marine Fisheries Commission (2009) Terms of reference and advisory report for the NEAMAP Nearshore Trawl Survey peer review. Report 09-01 of the Atlantic States Marine Fisheries Commission. Alexandria, VA
+ Gartland, J., Gaichas, S.K. and Latour, R.J., 2023. Spatiotemporal patterns in the ecological community of the nearshore Mid-Atlantic Bight. Marine Ecology Progress Series, 704, pp.15-33.</p>
+<br>
+</section>
+<section id="neracoos">
+<h2>NERACOOS<a class="headerlink" href="#neracoos" title="Link to this heading">#</a></h2>
+<p><strong>Location:</strong> ERDDAP <br>
+<strong>Link:</strong> <a class="reference external" href="https://data.neracoos.org/erddap/tabledap/">https://data.neracoos.org/erddap/tabledap/</a> <br>
+<strong>Dataset IDs:</strong></p>
+<ul class="simple">
+<li><p>A01_ocean_001m</p></li>
+<li><p>B01_ocean_001m</p></li>
+<li><p>E01_ocean_001m</p></li>
+<li><p>F01_ocean_001m</p></li>
+<li><p>I01_ocean_001m</p></li>
+<li><p>M01_ocean_001m</p></li>
+<li><p>N01_ocean_001m</p></li>
+</ul>
+<p><strong>Filetype:</strong> CSV <br>
+<strong>Profile type:</strong> Buoy <br>
+<strong>DOI:</strong> 10.25921/69jq-7135 <br>
+<strong>Citation:</strong> <br>
+ Shyka, T., &amp; Northeastern Regional Association of Coastal Ocean Observing System (NERACOOS). (2017). Physical and meteorological data collected from non-federal stations assembled by the Northeastern Regional Association of Coastal Ocean Observing Systems (NERACOOS) [Data set]. NOAA National Centers for Environmental Information. <a class="reference external" href="https://doi.org/10.25921/69jq-7135">https://doi.org/10.25921/69jq-7135</a> <br>
+ Physical Oceanography Group, School of Marine Sciences, University of Maine. (2026). A01 Ocean - 1 meter [Data set]. NERACOOS ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://data.neracoos.org/erddap/tabledap/A01_ocean_001m.csv">https://data.neracoos.org/erddap/tabledap/A01_ocean_001m.csv</a> <br>
+ Physical Oceanography Group, School of Marine Sciences, University of Maine. (2026). B01 Ocean - 1 meter [Data set]. NERACOOS ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://data.neracoos.org/erddap/tabledap/B01_ocean_001m.csv">https://data.neracoos.org/erddap/tabledap/B01_ocean_001m.csv</a> <br>
+ Physical Oceanography Group, School of Marine Sciences, University of Maine. (2026). E01 Ocean - 1 meter [Data set]. NERACOOS ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://data.neracoos.org/erddap/tabledap/E01_ocean_001m.csv">https://data.neracoos.org/erddap/tabledap/E01_ocean_001m.csv</a> <br>
+ Physical Oceanography Group, School of Marine Sciences, University of Maine. (2026). I01 Ocean - 1 meter [Data set]. NERACOOS ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://data.neracoos.org/erddap/tabledap/I01_ocean_001m.csv">https://data.neracoos.org/erddap/tabledap/I01_ocean_001m.csv</a> <br>
+ Physical Oceanography Group, School of Marine Sciences, University of Maine. (2026). M01 Ocean - 1 meter [Data set]. NERACOOS ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://data.neracoos.org/erddap/tabledap/M01_ocean_001m.csv">https://data.neracoos.org/erddap/tabledap/M01_ocean_001m.csv</a> <br>
+ Physical Oceanography Group, School of Marine Sciences, University of Maine. (2026). N01 Ocean - 1 meter [Data set]. NERACOOS ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://data.neracoos.org/erddap/tabledap/N01_ocean_001m.csv">https://data.neracoos.org/erddap/tabledap/N01_ocean_001m.csv</a> <br>
+<br></p>
+</section>
+<section id="maracoos">
+<h2>MARACOOS<a class="headerlink" href="#maracoos" title="Link to this heading">#</a></h2>
+<p><strong>Location:</strong> ERDDAP <br>
+<strong>Link:</strong> <a class="reference external" href="https://gliders.ioos.us/erddap/tabledap/">https://gliders.ioos.us/erddap/tabledap/</a> <br>
+<strong>Dataset IDs:</strong></p>
+<ul class="simple">
+<li><p>maracoos_02-20210503T1937</p></li>
+<li><p>maracoos_02-20210716T1814</p></li>
+<li><p>maracoos_02-20210820T1546</p></li>
+<li><p>maracoos_02-20211020T1322</p></li>
+<li><p>maracoos_02-20220420T2011-delayed</p></li>
+<li><p>maracoos_02-20230505T1613</p></li>
+<li><p>maracoos_02-20240124T1445</p></li>
+<li><p>maracoos_02-20240301T1425-delayed</p></li>
+<li><p>maracoos_02-20240502T1359-delayed</p></li>
+<li><p>maracoos_04-20221021T1433</p></li>
+<li><p>maracoos_04-20230221T1724</p></li>
+<li><p>maracoos_04-20241203T1457</p></li>
+<li><p>maracoos_05-20240619T1716-delayed</p></li>
+<li><p>maracoos_05-20240801T1650-delayed</p></li>
+<li><p>maracoos_05-20241011T1741-delayed</p></li>
+</ul>
+<p><strong>Filetype:</strong> CSV <br>
+<strong>Profile type:</strong> Vertical <br>
+<strong>DOI:</strong>  10.25921/69jq-7135 <br>
+<strong>Citation:</strong> <br>
+ Rutgers University. (2026). maracoos_02-20210503T1937 [Data set]. IOOS Gliders ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://gliders.ioos.us/erddap/tabledap/maracoos_02-20210503T1937.csv">https://gliders.ioos.us/erddap/tabledap/maracoos_02-20210503T1937.csv</a> <br>
+ Rutgers University. (2026). maracoos_02-20210716T1814 [Data set]. IOOS Gliders ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://gliders.ioos.us/erddap/tabledap/maracoos_02-20210716T1814.csv">https://gliders.ioos.us/erddap/tabledap/maracoos_02-20210716T1814.csv</a> <br>
+ Rutgers University. (2026). maracoos_02-20210820T1546 [Data set]. IOOS Gliders ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://gliders.ioos.us/erddap/tabledap/maracoos_02-20210820T1546.csv">https://gliders.ioos.us/erddap/tabledap/maracoos_02-20210820T1546.csv</a> <br>
+ Rutgers University. (2026). maracoos_02-20211020T1322 [Data set]. IOOS Gliders ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://gliders.ioos.us/erddap/tabledap/maracoos_02-20211020T1322.csv">https://gliders.ioos.us/erddap/tabledap/maracoos_02-20211020T1322.csv</a> <br>
+ Rutgers University. (2026). maracoos_02-20220420T2011-delayed [Data set]. IOOS Gliders ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://gliders.ioos.us/erddap/tabledap/maracoos_02-20220420T2011-delayed.csv">https://gliders.ioos.us/erddap/tabledap/maracoos_02-20220420T2011-delayed.csv</a> <br>
+ Rutgers University. (2026). maracoos_02-20230505T1613 [Data set]. IOOS Gliders ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://gliders.ioos.us/erddap/tabledap/maracoos_02-20230505T1613.csv">https://gliders.ioos.us/erddap/tabledap/maracoos_02-20230505T1613.csv</a> <br>
+ Rutgers University. (2026). maracoos_02-20240124T1445 [Data set]. IOOS Gliders ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://gliders.ioos.us/erddap/tabledap/maracoos_02-20240124T1445.csv">https://gliders.ioos.us/erddap/tabledap/maracoos_02-20240124T1445.csv</a> <br>
+ Rutgers University. (2026). maracoos_02-20240301T1425-delayed [Data set]. IOOS Gliders ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://gliders.ioos.us/erddap/tabledap/maracoos_02-20240301T1425-delayed.csv">https://gliders.ioos.us/erddap/tabledap/maracoos_02-20240301T1425-delayed.csv</a> <br>
+ Rutgers University. (2026). maracoos_02-20240502T1359-delayed [Data set]. IOOS Gliders ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://gliders.ioos.us/erddap/tabledap/maracoos_02-20240502T1359-delayed.csv">https://gliders.ioos.us/erddap/tabledap/maracoos_02-20240502T1359-delayed.csv</a> <br>
+ Rutgers University. (2026). maracoos_04-20221021T1433 [Data set]. IOOS Gliders ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://gliders.ioos.us/erddap/tabledap/maracoos_04-20221021T1433.csv">https://gliders.ioos.us/erddap/tabledap/maracoos_04-20221021T1433.csv</a> <br>
+ Rutgers University. (2026). maracoos_04-20230221T1724 [Data set]. IOOS Gliders ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://gliders.ioos.us/erddap/tabledap/maracoos_04-20230221T1724.csv">https://gliders.ioos.us/erddap/tabledap/maracoos_04-20230221T1724.csv</a> <br>
+ Rutgers University. (2026). maracoos_04-20241203T1457 [Data set]. IOOS Gliders ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://gliders.ioos.us/erddap/tabledap/maracoos_04-20241203T1457.csv">https://gliders.ioos.us/erddap/tabledap/maracoos_04-20241203T1457.csv</a> <br>
+ Rutgers University. (2026). maracoos_05-20240619T1716-delayed [Data set]. IOOS Gliders ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://gliders.ioos.us/erddap/tabledap/maracoos_05-20240619T1716-delayed.csv">https://gliders.ioos.us/erddap/tabledap/maracoos_05-20240619T1716-delayed.csv</a> <br>
+ Rutgers University. (2026). maracoos_05-20240801T1650-delayed [Data set]. IOOS Gliders ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://gliders.ioos.us/erddap/tabledap/maracoos_05-20240801T1650-delayed.csv">https://gliders.ioos.us/erddap/tabledap/maracoos_05-20240801T1650-delayed.csv</a> <br>
+ Rutgers University. (2026). maracoos_05-20241011T1741-delayed [Data set]. IOOS Gliders ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://gliders.ioos.us/erddap/tabledap/maracoos_05-20241011T1741-delayed.csv">https://gliders.ioos.us/erddap/tabledap/maracoos_05-20241011T1741-delayed.csv</a> <br>
+<br></p>
+</section>
+<section id="wod">
+<h2>WOD<a class="headerlink" href="#wod" title="Link to this heading">#</a></h2>
+<p><strong>Location:</strong> WOD Select and Search <br>
+<strong>Link:</strong> <a class="reference external" href="https://www.ncei.noaa.gov/access/world-ocean-database-select/dbsearch.html">https://www.ncei.noaa.gov/access/world-ocean-database-select/dbsearch.html</a> <br>
+<strong>Filetype:</strong> NC <br>
+<strong>Data request SOP:</strong></p>
+<ul class="simple">
+<li><p>Choose search criteria:</p>
+<ul>
+<li><p>Geographic Coordinates</p></li>
+<li><p>Observation Dates - e.g., Year(s), Month(s), Day(s)</p></li>
+<li><p>Dataset - e.g., OSD, CTD, XBT</p></li>
+</ul>
+</li>
+<li><p>Select “Build a query”</p></li>
+<li><p>Geographic Coordinates:</p>
+<ul>
+<li><p>Northern edge: 46.362305</p></li>
+<li><p>Southern edge: 34.40918</p></li>
+<li><p>Eastern edge: -63.585942</p></li>
+<li><p>Western edge:-77.681645</p></li>
+</ul>
+</li>
+<li><p>Dates:</p>
+<ul>
+<li><p>01/01/2000 - 2024/12/31</p></li>
+</ul>
+</li>
+<li><p>Datasets:</p>
+<ul>
+<li><p>CTD</p></li>
+<li><p>DRB</p></li>
+<li><p>OSD</p></li>
+<li><p>PFL</p></li>
+<li><p>MRB</p></li>
+<li><p>APB</p></li>
+<li><p>UOR</p></li>
+<li><p>GLD</p></li>
+</ul>
+</li>
+<li><p>Select “get inventory”</p></li>
+<li><p>Select “download data”</p></li>
+<li><p>Choose format:</p>
+<ul>
+<li><p>netCDF format</p></li>
+<li><p>single cast</p></li>
+</ul>
+</li>
+<li><p>Choose level depth</p>
+<ul>
+<li><p>Observed level depth (default)</p></li>
+</ul>
+</li>
+<li><p>Choose flag types</p>
+<ul>
+<li><p>WOD flags (default)</p></li>
+</ul>
+</li>
+<li><p>Extract data</p></li>
+</ul>
+<p><strong>Profile type:</strong> Vertical and buoy <br>
+<strong>DOI:</strong> 10.25923/z885-h264 <br>
+<strong>Citation:</strong> <br>
+ Mishonov A.V., T. P. Boyer, O. K. Baranova, C. N. Bouchard, S. Cross, H. E. Garcia, R.  A. Locarnini, C. R. Paver, J. R. Reagan, Z. Wang, D. Seidov, A. I. Grodsky, J. G. Beauchamp, (2024): World Ocean Database 2023. C. Bouchard, Technical Ed., NOAA Atlas NESDIS 97, 206 pp., <a class="reference external" href="http://doi.org/10.25923/z885-h264">doi.org/10.25923/z885-h264</a>,</p>
+</section>
+<section id="pioneer-array">
+<h2>Pioneer Array<a class="headerlink" href="#pioneer-array" title="Link to this heading">#</a></h2>
+<p><strong>Location:</strong> ERDDAP <br>
+<strong>Link:</strong> <a class="reference external" href="https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/">https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/</a> <br>
+<strong>Dataset IDs:</strong></p>
+<ul class="simple">
+<li><p>ooi-cp10cnsm-rid27-03-ctdbpc000</p></li>
+<li><p>ooi-cp10cnsm-mfd37-03-ctdbpc000</p></li>
+<li><p>ooi-cp13eapm-sbi01-02-ctdmos011</p></li>
+<li><p>ooi-cp14nepm-sbi01-02-ctdmos011</p></li>
+<li><p>ooi-cp13nopm-sbi01-02-ctdmos011</p></li>
+<li><p>ooi-cp11nosm-rid27-03-ctdbpc000</p></li>
+<li><p>ooi-cp11nosm-mfd37-03-ctdbpd000</p></li>
+<li><p>ooi-cp14sepm-sbi01-02-ctdmos011</p></li>
+<li><p>ooi-cp13sopm-sbi01-02-ctdmos011</p></li>
+<li><p>ooi-cp11sosm-rid27-03-ctdbpc000</p></li>
+<li><p>ooi-cp11sosm-mfd37-03-ctdbpd000</p></li>
+<li><p>ooi-cp01cnsm-rid27-03-ctdbpc000</p></li>
+<li><p>ooi-cp01cnsm-mfd37-03-ctdbpd000</p></li>
+<li><p>ooi-cp03issm-rid27-03-ctdbpc000</p></li>
+<li><p>ooi-cp03issm-mfd37-03-ctdbpd000</p></li>
+<li><p>ooi-cp04ossm-rid27-03-ctdbpc000
+<strong>Filetype:</strong> CSV <br>
+<strong>Profile type:</strong> Buoy <br>
+<strong>DOI:</strong> 10.5159/OCCI-PIONEER-ARRAY <br>
+<strong>Citation:</strong> <br>
+ Ocean Observatories Initiative (OOI). (2026). Coastal Pioneer MAB: Central Surface Mooring: Near Surface Instrument Frame:
+CTD [Data set]. Ocean Observatories Initiative ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp10cnsm-rid27-03-ctdbpc000.csv">https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp10cnsm-rid27-03-ctdbpc000.csv</a> <br>
+ Ocean Observatories Initiative (OOI). (2026). Coastal Pioneer MAB: Central Surface Mooring: Seafloor Multi-Function
+Node (MFN): CTD [Data set]. Ocean Observatories Initiative ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp10cnsm-mfd37-03-ctdbpc000.csv">https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp10cnsm-mfd37-03-ctdbpc000.csv</a> <br>
+ Ocean Observatories Initiative (OOI). (2026). Coastal Pioneer MAB: Eastern Profiler Mooring: Surface Buoy: CTD [Data set]. Ocean Observatories Initiative ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp13eapm-sbi01-02-ctdmos011.csv">https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp13eapm-sbi01-02-ctdmos011.csv</a> <br>
+ Ocean Observatories Initiative (OOI). (2026). Coastal Pioneer MAB: Coastal Pioneer MAB: Northeastern Profiler Mooring: Surface Buoy: CTD [Data set]. Ocean Observatories Initiative ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp14nepm-sbi01-02-ctdmos011.csv">https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp14nepm-sbi01-02-ctdmos011.csv</a> <br>
+ Ocean Observatories Initiative (OOI). (2026). Coastal Pioneer MAB: Northern Profiler Mooring: Surface Buoy: CTD [Data set]. Ocean Observatories Initiative ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp13nopm-sbi01-02-ctdmos011.csv">https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp13nopm-sbi01-02-ctdmos011.csv</a> <br>
+ Ocean Observatories Initiative (OOI). (2026). Coastal Pioneer MAB: Northern Surface Mooring: Near Surface Instrument Frame:
+CTD [Data set]. Ocean Observatories Initiative ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp11nosm-rid27-03-ctdbpc000.csv">https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp11nosm-rid27-03-ctdbpc000.csv</a> <br>
+ Ocean Observatories Initiative (OOI). (2026). Coastal Pioneer MAB: Northern Surface Mooring: Seafloor Multi-Function
+Node (MFN): CTD [Data set]. Ocean Observatories Initiative ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp11nosm-mfd37-03-ctdbpd000.csv">https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp11nosm-mfd37-03-ctdbpd000.csv</a> <br>
+ Ocean Observatories Initiative (OOI). (2026). Coastal Pioneer MAB: Southeastern Profiler Mooring: Surface Buoy: CTD [Data set]. Ocean Observatories Initiative ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp14sepm-sbi01-02-ctdmos011.csv">https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp14sepm-sbi01-02-ctdmos011.csv</a> <br>
+ Ocean Observatories Initiative (OOI). (2026). Coastal Pioneer MAB: Southern Profiler Mooring: Surface Buoy: CTD [Data set]. Ocean Observatories Initiative ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp13sopm-sbi01-02-ctdmos011.csv">https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp13sopm-sbi01-02-ctdmos011.csv</a> <br>
+ Ocean Observatories Initiative (OOI). (2026). Coastal Pioneer MAB: Southern Surface Mooring: Near Surface Instrument Frame:
+CTD [Data set]. Ocean Observatories Initiative ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp11sosm-rid27-03-ctdbpc000.csv">https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp11sosm-rid27-03-ctdbpc000.csv</a> <br>
+ Ocean Observatories Initiative (OOI). (2026). Coastal Pioneer MAB: Southern Surface Mooring: Seafloor Multi-Function
+Node (MFN): CTD [Data set]. Ocean Observatories Initiative ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp11sosm-mfd37-03-ctdbpd000.csv">https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp11sosm-mfd37-03-ctdbpd000.csv</a> <br>
+ Ocean Observatories Initiative (OOI). (2026). Coastal Pioneer NES: Central Surface Mooring: Near Surface Instrument Frame:
+CTD  [Data set]. Ocean Observatories Initiative ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp01cnsm-rid27-03-ctdbpc000.csv">https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp01cnsm-rid27-03-ctdbpc000.csv</a> <br>
+ Ocean Observatories Initiative (OOI). (2026). Coastal Pioneer NES: Central Surface Mooring: Seafloor Multi-Function
+Node (MFN): CTD [Data set]. Ocean Observatories Initiative ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp01cnsm-mfd37-03-ctdbpd000.csv">https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp01cnsm-mfd37-03-ctdbpd000.csv</a> <br>
+ Ocean Observatories Initiative (OOI). (2026). Coastal Pioneer NES: Inshore Surface Mooring: Near Surface Instrument Frame:
+CTD [Data set]. Ocean Observatories Initiative ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp03issm-rid27-03-ctdbpc000.csv">https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp03issm-rid27-03-ctdbpc000.csv</a> <br>
+ Ocean Observatories Initiative (OOI). (2026). Coastal Pioneer NES: Inshore Surface Mooring: Seafloor Multi-Function
+Node (MFN): CTD [Data set]. Ocean Observatories Initiative ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp03issm-mfd37-03-ctdbpd000.csv">https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp03issm-mfd37-03-ctdbpd000.csv</a> <br>
+ Ocean Observatories Initiative (OOI). (2026). Coastal Pioneer NES: Offshore Surface Mooring: Near Surface Instrument Frame:
+CTD [Data set]. Ocean Observatories Initiative ERDDAP. Retrieved May 1, 2026, from <a class="reference external" href="https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp04ossm-rid27-03-ctdbpc000.csv">https://erddap.dataexplorer.oceanobservatories.org/erddap/tabledap/ooi-cp04ossm-rid27-03-ctdbpc000.csv</a> <br></p></li>
+</ul>
+</section>
+<section id="seabass">
+<h2>SeaBASS<a class="headerlink" href="#seabass" title="Link to this heading">#</a></h2>
+<p><strong>Location:</strong> SeaBASS file search <br>
+<strong>Link:</strong> <a class="reference external" href="https://seabass.gsfc.nasa.gov/search">https://seabass.gsfc.nasa.gov/search</a> <br>
+<strong>Data request SOP:</strong> <br></p>
+<ul class="simple">
+<li><p>Dates: 01/01/2000- 2024/12/31</p></li>
+<li><p>Geographic Coordinates:</p>
+<ul>
+<li><p>Northern edge: 46.362305</p></li>
+<li><p>Southern edge: 34.40918</p></li>
+<li><p>Eastern edge: -63.585942</p></li>
+<li><p>Western edge:-77.681645</p></li>
+</ul>
+</li>
+<li><p>Products:</p>
+<ul>
+<li><p>“Find files containing any of the selected products”</p></li>
+</ul>
+</li>
+<li><p>Grouped products:</p>
+<ul>
+<li><p>CTD
+<strong>Filetype:</strong> SB <br>
+<strong>Profile type:</strong>  <br>
+<strong>DOI:</strong> <br>
+<strong>Citation:</strong> <br>
+ Werdell, P. J., &amp; Bailey, S. W. (2002). The SeaWiFS Bio-optical Archive and Storage System (SeaBASS): Current architecture and implementation (NASA Tech. Memo. 2002-211617). NASA Goddard Space Flight Center.
+&amp;esmp;Werdell, P. J., Bailey, S. W., Fargion, G. S., Pietras, C., Knobelspiesse, K. D., Feldman, G. C., &amp; McClain, C. R. (2003). Unique data repository facilitates ocean color satellite validation. Eos, Transactions American Geophysical Union, 84(38), 377–381. <a class="reference external" href="https://doi.org/10.1029/2003EO380001">https://doi.org/10.1029/2003EO380001</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="surface-underway-marine-database-sumd">
+<h2>Surface Underway Marine Database (SUMD)<a class="headerlink" href="#surface-underway-marine-database-sumd" title="Link to this heading">#</a></h2>
+<p><strong>Location:</strong> Surface Underway Marine Database Portal <br>
+<strong>Link:</strong> <a class="reference external" href="https://www.ncei.noaa.gov/access/surface-underway-marine-database/">https://www.ncei.noaa.gov/access/surface-underway-marine-database/</a> <br>
+<strong>Data request SOP:</strong> <br></p>
+<ul class="simple">
+<li><p>Data parameters:</p>
+<ul>
+<li><p>Sea Surface Salinity</p></li>
+<li><p>Sea Surface Temperature - measured by remote temperature sensor</p></li>
+</ul>
+</li>
+<li><p>Dates: 01/01/2000- 2024/12/31</p></li>
+<li><p>Geographic Coordinates:</p>
+<ul>
+<li><p>Northern edge: 46.362305</p></li>
+<li><p>Southern edge: 34.40918</p></li>
+<li><p>Eastern edge: -63.585942</p></li>
+<li><p>Western edge:-77.681645
+<strong>Filetype:</strong> NC <br>
+<strong>Profile type:</strong> flowthrough <br>
+<strong>DOI:</strong>  <br>
+<strong>Citation:</strong> <br>
+ NOAA National Centers for Environmental Information. (2025). Surface Underway Marine Database (SUMD) [Data set]. NOAA. Retrieved July 29 2025, from <a class="reference external" href="https://www.ncei.noaa.gov/access/surface-underway-marine-database/">https://www.ncei.noaa.gov/access/surface-underway-marine-database/</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="nefsc-passive-acoustics-branch-pab">
+<h2>NEFSC Passive Acoustics Branch (PAB)<a class="headerlink" href="#nefsc-passive-acoustics-branch-pab" title="Link to this heading">#</a></h2>
+<p>The Virginia (VA/CB) sites are in collaboration with the US Navy/HDR and the Stellwagen (SBNMS) sites are in collaboration with the Office of National Marine Sanctuaries (ONMS).<br />
+<strong>Location:</strong> By request <br>
+<strong>Link:</strong>  NA <br>
+<strong>Filetype:</strong> CSV <br>
+<strong>Profile type:</strong> Buoy <br>
+<strong>DOI:</strong>  <br>
+<strong>Citation:</strong> <br>
+ NEFSC Passive Acoustics Branch. (2026). Passive acoustic bottom-mounted moorings [Data set]. Accessed April 26 2026.</p>
+</section>
+<section id="how-to-set-up-a-new-data-source-for-processing">
+<h2>How to set up a new data source for processing<a class="headerlink" href="#how-to-set-up-a-new-data-source-for-processing" title="Link to this heading">#</a></h2>
+<p>If you wish to add a new dataset and process the raw data into spatiotemporal depth bins (surface and bottom), then you can edit the <a class="reference external" href="https://github.com/hsynan/READ-EDAB-Synan_hydrographic_climatologies/blob/main/code/FUNC_SOURCES_URLS.py">FUNC_SOURCE_URLS.py</a> file. In this file, edit the ```get_source`` function, following the template outlined below. <br>
+<em>NOTE:</em> If the data is a buoy or flowthrough, then the unique_id can be left as an empty string. If the profile type is vertical, then you need must provide a column(s) header with a unique id that can separate the data into profiles.</p>
+<p><code class="docutils literal notranslate"><span class="pre">'new_data':{'name':'new_data','urls':[os.path.join(local_dir,'newdata.csv')],'filetype':'csv','platform':'float','profiletype':'vertical','unique_id':['station_id','cast_num']}</span></code></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="processing_data.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data processing</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#argo">Argo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bco-dmo">BCO-DMO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cfrf-whoi-shelf-research-fleet">CFRF/WHOI Shelf Research Fleet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ecomon">EcoMon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#department-of-fisheries-oceanography-canada">Department of Fisheries Oceanography Canada</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fishing-industry-shared-bottom-oceanographic-timeseries-fishbot">Fishing Industry Shared Bottom Oceanographic Timeseries (FIShBOT)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maine-department-of-marine-resources">Maine Department of Marine Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neamap">NEAMAP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neracoos">NERACOOS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maracoos">MARACOOS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wod">WOD</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pioneer-array">Pioneer Array</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seabass">SeaBASS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#surface-underway-marine-database-sumd">Surface Underway Marine Database (SUMD)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nefsc-passive-acoustics-branch-pab">NEFSC Passive Acoustics Branch (PAB)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-set-up-a-new-data-source-for-processing">How to set up a new data source for processing</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Haley Synan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
