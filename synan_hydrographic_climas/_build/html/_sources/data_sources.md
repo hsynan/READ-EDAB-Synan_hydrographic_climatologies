@@ -9,6 +9,7 @@ In the data paper, we are standardizing and aggregating data from multiple sourc
 **DOI:** 10.17882/42182 <br>
 **Citation:** <br>
 &emsp;Argo. (2025). Argo float measurements [Data set]. Ifremer ERDDAP. Retrieved August 20, 2025, from https://erddap.ifremer.fr/erddap/tabledap/ArgoFloats.csv?fileNumber%2Cdata_type%2Cformat_version%2Chandbook_version%2Creference_date_time%2Cdate_creation%2Cdate_update%2Cplatform_number%2Cproject_name%2Cpi_name%2Ccycle_number%2Cdirection%2Cdata_center%2Cdc_reference%2Cdata_state_indicator%2Cdata_mode%2Cplatform_type%2Cfloat_serial_no%2Cfirmware_version%2Cwmo_inst_type%2Ctime%2Ctime_qc%2Ctime_location%2Clatitude%2Clongitude%2Cposition_qc%2Cpositioning_system%2Cprofile_pres_qc%2Cprofile_temp_qc%2Cprofile_psal_qc%2Cvertical_sampling_scheme%2Cconfig_mission_number%2Cpres%2Cpres_qc%2Cpres_adjusted%2Cpres_adjusted_qc%2Cpres_adjusted_error%2Ctemp%2Ctemp_qc%2Ctemp_adjusted%2Ctemp_adjusted_qc%2Ctemp_adjusted_error%2Cpsal%2Cpsal_qc%2Cpsal_adjusted%2Cpsal_adjusted_qc%2Cpsal_adjusted_error%2Cdoxy%2Cdoxy_qc%2Ctemp_doxy%2Ctemp_doxy_qc%2Cmolar_doxy%2Cmolar_doxy_qc%2Cturbidity%2Cturbidity_qc%2Cchla%2Cchla_qc%2Cnitrate%2Cnitrate_qc&time%3E=2000-01-01T00%3A00%3A00Z&time%3C=2024-12-31T23%3A23%3A20Z
+
 ## BCO-DMO
 **Location:** ERDDAP <br>
 **Link:**  https://erddap.bco-dmo.org/erddap/tabledap/bcodmo_dataset_{id} <br>
@@ -98,6 +99,24 @@ temperature and pressure time series data [Data set]. CIOOS Atlantic ERDDAP. Ret
 &emsp;Regional Association of the Candadian Integrated Ocean Observing System. (2026). Maritimes Region Historical Ocean Tracking Network (OTN) Project Moored Time
 Series Data [Data set]. CIOOS Atlantic ERDDAP. Retrieved May 1, 2026, from https://cioosatlantic.ca/erddap/tabledap/bio_ocean_tracking_network_moored_ctd.csv <br>
 <br>
+
+## Fishing Industry Shared Bottom Oceanographic Timeseries (FIShBOT)
+**Location:** ERDDAP
+**Link:** 
+&emsp;Current version: https://erddap.ondeckdata.com/erddap/tabledap/fishbot_realtime.html
+&emsp;Archived 20 m bottom version: https://zenodo.org/records/22168636
+**Filetype:** CSV <br>
+**Profile type:** Varied. Data is aggregated from both fisheries dependent and fisheries independent data. Profile types include vertical profiles, fishing trawls, gliders, and flowthrough data.
+**DOI:** https://doi.org/10.5281/zenodo.22168636
+**Citation:** 
+&emsp;Stoltz L., Maynard, G., Morin, M., Salois, S. (2026). FIShBOT Archive 2026-08-30 (V1) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.22168636
+&emsp;Linus Stoltz, George Maynard, Michael Morin, Sarah Salois. 2025. Production
+of an in-situ bottom water temperature product for the northeast US
+continental shelf using oceanographic data collected by fishing vessels . US
+Dept Commer Northeast Fish Sci Cent Tech Memo 341. 20 p
+
+<br>
+
 ## Maine Department of Marine Resources 
 **Location:** Maine DMR Data Portal <br>
 **Link:**  https://mainedmr.shinyapps.io/MaineDMR_Trawl_Survey_Portal/ **Requires an account** <br>
@@ -119,6 +138,7 @@ Series Data [Data set]. CIOOS Atlantic ERDDAP. Retrieved May 1, 2026, from https
 &emsp;Gartland, J., Gaichas, S.K. and Latour, R.J., 2023. Spatiotemporal patterns in the ecological community of the nearshore Mid-Atlantic Bight. Marine Ecology Progress Series, 704, pp.15-33.
 
 <br>
+
 ## NERACOOS
 **Location:** ERDDAP <br>
 **Link:** https://data.neracoos.org/erddap/tabledap/ <br>

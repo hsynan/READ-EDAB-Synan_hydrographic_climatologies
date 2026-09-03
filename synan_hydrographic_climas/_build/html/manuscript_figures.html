@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -465,67 +465,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#surface POINT (processed)</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">df_surf</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;W:\nadata\PROJECTS\NESCAPES\PROCESSED_DATA\POINT_MEAN_ABOVEMLD\ALL_POINT_MEAN_ABOVEMLD\PROCESSED_MEAN_ABOVEMLD_ALL.csv&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;surface point data opend&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1">#bottom POINT (processed)</span>
-
-<span class="nn">File ~\AppData\Local\anaconda3\Lib\site-packages\pandas\io\parsers\readers.py:1026,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1013</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1014</span>     <span class="n">dialect</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1015</span>     <span class="n">delimiter</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1022</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1023</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1024</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1026</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
-
-<span class="nn">File ~\AppData\Local\anaconda3\Lib\site-packages\pandas\io\parsers\readers.py:626,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">623</span>     <span class="k">return</span> <span class="n">parser</span>
-<span class="g g-Whitespace">    </span><span class="mi">625</span> <span class="k">with</span> <span class="n">parser</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">626</span>     <span class="k">return</span> <span class="n">parser</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">nrows</span><span class="p">)</span>
-
-<span class="nn">File ~\AppData\Local\anaconda3\Lib\site-packages\pandas\io\parsers\readers.py:1923,</span> in <span class="ni">TextFileReader.read</span><span class="nt">(self, nrows)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1916</span> <span class="n">nrows</span> <span class="o">=</span> <span class="n">validate_integer</span><span class="p">(</span><span class="s2">&quot;nrows&quot;</span><span class="p">,</span> <span class="n">nrows</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1917</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1918</span>     <span class="c1"># error: &quot;ParserBase&quot; has no attribute &quot;read&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1919</span>     <span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1920</span>         <span class="n">index</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1921</span>         <span class="n">columns</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1922</span>         <span class="n">col_dict</span><span class="p">,</span>
-<span class="ne">-&gt; </span><span class="mi">1923</span>     <span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>  <span class="c1"># type: ignore[attr-defined]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1924</span>         <span class="n">nrows</span>
-<span class="g g-Whitespace">   </span><span class="mi">1925</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1926</span> <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1927</span>     <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="nn">File ~\AppData\Local\anaconda3\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py:234,</span> in <span class="ni">CParserWrapper.read</span><span class="nt">(self, nrows)</span>
-<span class="g g-Whitespace">    </span><span class="mi">232</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">233</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">low_memory</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">234</span>         <span class="n">chunks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span><span class="o">.</span><span class="n">read_low_memory</span><span class="p">(</span><span class="n">nrows</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">235</span>         <span class="c1"># destructive to chunks</span>
-<span class="g g-Whitespace">    </span><span class="mi">236</span>         <span class="n">data</span> <span class="o">=</span> <span class="n">_concatenate_chunks</span><span class="p">(</span><span class="n">chunks</span><span class="p">)</span>
-
-<span class="nn">File parsers.pyx:838,</span> in <span class="ni">pandas._libs.parsers.TextReader.read_low_memory</span><span class="nt">()</span>
-
-<span class="nn">File parsers.pyx:905,</span> in <span class="ni">pandas._libs.parsers.TextReader._read_rows</span><span class="nt">()</span>
-
-<span class="nn">File parsers.pyx:874,</span> in <span class="ni">pandas._libs.parsers.TextReader._tokenize_rows</span><span class="nt">()</span>
-
-<span class="nn">File parsers.pyx:891,</span> in <span class="ni">pandas._libs.parsers.TextReader._check_tokenize_status</span><span class="nt">()</span>
-
-<span class="nn">File parsers.pyx:2053,</span> in <span class="ni">pandas._libs.parsers.raise_parser_error</span><span class="nt">()</span>
-
-<span class="nn">File &lt;frozen codecs&gt;:319,</span> in <span class="ni">decode</span><span class="nt">(self, input, final)</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="set-directory-for-figure-output">
@@ -599,6 +538,16 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\haley.synan\AppData\Local\anaconda3\Lib\site-packages\urllib3\connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host &#39;hfr.marine.rutgers.edu&#39;. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+C:\Users\haley.synan\AppData\Local\Temp\ipykernel_15712\1879073384.py:32: UserWarning: Geometry is in a geographic CRS. Results from &#39;centroid&#39; are likely incorrect. Use &#39;GeoSeries.to_crs()&#39; to re-project geometries to a projected CRS before this operation.
+
+  x, y = gs.geometry.centroid.x, gs.geometry.centroid.y
+</pre></div>
+</div>
+<img alt="_images/3525cc1765b409a906f11e40bf7cc6c07ead0aef729f7ca7328880eb44c5101e.png" src="_images/3525cc1765b409a906f11e40bf7cc6c07ead0aef729f7ca7328880eb44c5101e.png" />
+</div>
 </div>
 </section>
 <section id="table-1">
@@ -664,6 +613,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/193bc589a70aae39feb4a9b7f7be5761c63df849c4c71266bbbd270f82976224.png" src="_images/193bc589a70aae39feb4a9b7f7be5761c63df849c4c71266bbbd270f82976224.png" />
+</div>
 </div>
 </section>
 <section id="figure-2">
@@ -723,6 +675,35 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\haley.synan\AppData\Local\Temp\ipykernel_15712\3539205357.py:36: RuntimeWarning: divide by zero encountered in log
+  im=ax.pcolormesh(Y_edges, X_edges, np.log(H_masked.T), cmap=cmap,vmax=10,vmin=0)
+C:\Users\haley.synan\AppData\Local\Temp\ipykernel_15712\3539205357.py:36: RuntimeWarning: divide by zero encountered in log
+  im=ax.pcolormesh(Y_edges, X_edges, np.log(H_masked.T), cmap=cmap,vmax=10,vmin=0)
+C:\Users\haley.synan\AppData\Local\Temp\ipykernel_15712\3539205357.py:36: RuntimeWarning: divide by zero encountered in log
+  im=ax.pcolormesh(Y_edges, X_edges, np.log(H_masked.T), cmap=cmap,vmax=10,vmin=0)
+C:\Users\haley.synan\AppData\Local\Temp\ipykernel_15712\3539205357.py:36: RuntimeWarning: divide by zero encountered in log
+  im=ax.pcolormesh(Y_edges, X_edges, np.log(H_masked.T), cmap=cmap,vmax=10,vmin=0)
+C:\Users\haley.synan\AppData\Local\Temp\ipykernel_15712\3539205357.py:36: RuntimeWarning: divide by zero encountered in log
+  im=ax.pcolormesh(Y_edges, X_edges, np.log(H_masked.T), cmap=cmap,vmax=10,vmin=0)
+C:\Users\haley.synan\AppData\Local\Temp\ipykernel_15712\3539205357.py:36: RuntimeWarning: divide by zero encountered in log
+  im=ax.pcolormesh(Y_edges, X_edges, np.log(H_masked.T), cmap=cmap,vmax=10,vmin=0)
+C:\Users\haley.synan\AppData\Local\Temp\ipykernel_15712\3539205357.py:36: RuntimeWarning: divide by zero encountered in log
+  im=ax.pcolormesh(Y_edges, X_edges, np.log(H_masked.T), cmap=cmap,vmax=10,vmin=0)
+C:\Users\haley.synan\AppData\Local\Temp\ipykernel_15712\3539205357.py:36: RuntimeWarning: divide by zero encountered in log
+  im=ax.pcolormesh(Y_edges, X_edges, np.log(H_masked.T), cmap=cmap,vmax=10,vmin=0)
+C:\Users\haley.synan\AppData\Local\Temp\ipykernel_15712\3539205357.py:36: RuntimeWarning: divide by zero encountered in log
+  im=ax.pcolormesh(Y_edges, X_edges, np.log(H_masked.T), cmap=cmap,vmax=10,vmin=0)
+C:\Users\haley.synan\AppData\Local\Temp\ipykernel_15712\3539205357.py:36: RuntimeWarning: divide by zero encountered in log
+  im=ax.pcolormesh(Y_edges, X_edges, np.log(H_masked.T), cmap=cmap,vmax=10,vmin=0)
+C:\Users\haley.synan\AppData\Local\Temp\ipykernel_15712\3539205357.py:36: RuntimeWarning: divide by zero encountered in log
+  im=ax.pcolormesh(Y_edges, X_edges, np.log(H_masked.T), cmap=cmap,vmax=10,vmin=0)
+C:\Users\haley.synan\AppData\Local\Temp\ipykernel_15712\3539205357.py:36: RuntimeWarning: divide by zero encountered in log
+  im=ax.pcolormesh(Y_edges, X_edges, np.log(H_masked.T), cmap=cmap,vmax=10,vmin=0)
+</pre></div>
+</div>
+<img alt="_images/b3bcbfbda166c6b06208772baf13a73628653d05ea5ae5e3ed69ee00f0cf5e77.png" src="_images/b3bcbfbda166c6b06208772baf13a73628653d05ea5ae5e3ed69ee00f0cf5e77.png" />
+</div>
 </div>
 </section>
 <section id="figure-4">
@@ -778,6 +759,35 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\haley.synan\AppData\Local\Temp\ipykernel_15712\3812490846.py:35: RuntimeWarning: divide by zero encountered in log
+  im=ax.pcolormesh(Y_edges, X_edges, np.log(H_masked.T), cmap=cmap,vmin=0,vmax=10)
+C:\Users\haley.synan\AppData\Local\Temp\ipykernel_15712\3812490846.py:35: RuntimeWarning: divide by zero encountered in log
+  im=ax.pcolormesh(Y_edges, X_edges, np.log(H_masked.T), cmap=cmap,vmin=0,vmax=10)
+C:\Users\haley.synan\AppData\Local\Temp\ipykernel_15712\3812490846.py:35: RuntimeWarning: divide by zero encountered in log
+  im=ax.pcolormesh(Y_edges, X_edges, np.log(H_masked.T), cmap=cmap,vmin=0,vmax=10)
+C:\Users\haley.synan\AppData\Local\Temp\ipykernel_15712\3812490846.py:35: RuntimeWarning: divide by zero encountered in log
+  im=ax.pcolormesh(Y_edges, X_edges, np.log(H_masked.T), cmap=cmap,vmin=0,vmax=10)
+C:\Users\haley.synan\AppData\Local\Temp\ipykernel_15712\3812490846.py:35: RuntimeWarning: divide by zero encountered in log
+  im=ax.pcolormesh(Y_edges, X_edges, np.log(H_masked.T), cmap=cmap,vmin=0,vmax=10)
+C:\Users\haley.synan\AppData\Local\Temp\ipykernel_15712\3812490846.py:35: RuntimeWarning: divide by zero encountered in log
+  im=ax.pcolormesh(Y_edges, X_edges, np.log(H_masked.T), cmap=cmap,vmin=0,vmax=10)
+C:\Users\haley.synan\AppData\Local\Temp\ipykernel_15712\3812490846.py:35: RuntimeWarning: divide by zero encountered in log
+  im=ax.pcolormesh(Y_edges, X_edges, np.log(H_masked.T), cmap=cmap,vmin=0,vmax=10)
+C:\Users\haley.synan\AppData\Local\Temp\ipykernel_15712\3812490846.py:35: RuntimeWarning: divide by zero encountered in log
+  im=ax.pcolormesh(Y_edges, X_edges, np.log(H_masked.T), cmap=cmap,vmin=0,vmax=10)
+C:\Users\haley.synan\AppData\Local\Temp\ipykernel_15712\3812490846.py:35: RuntimeWarning: divide by zero encountered in log
+  im=ax.pcolormesh(Y_edges, X_edges, np.log(H_masked.T), cmap=cmap,vmin=0,vmax=10)
+C:\Users\haley.synan\AppData\Local\Temp\ipykernel_15712\3812490846.py:35: RuntimeWarning: divide by zero encountered in log
+  im=ax.pcolormesh(Y_edges, X_edges, np.log(H_masked.T), cmap=cmap,vmin=0,vmax=10)
+C:\Users\haley.synan\AppData\Local\Temp\ipykernel_15712\3812490846.py:35: RuntimeWarning: divide by zero encountered in log
+  im=ax.pcolormesh(Y_edges, X_edges, np.log(H_masked.T), cmap=cmap,vmin=0,vmax=10)
+C:\Users\haley.synan\AppData\Local\Temp\ipykernel_15712\3812490846.py:35: RuntimeWarning: divide by zero encountered in log
+  im=ax.pcolormesh(Y_edges, X_edges, np.log(H_masked.T), cmap=cmap,vmin=0,vmax=10)
+</pre></div>
+</div>
+<img alt="_images/1d37d2f2e1e83284051d74b18f82547a1c62b167e5728eea1176606f5b2d5748.png" src="_images/1d37d2f2e1e83284051d74b18f82547a1c62b167e5728eea1176606f5b2d5748.png" />
+</div>
 </div>
 </section>
 <section id="figure-5">
@@ -803,6 +813,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/3f7ed075077030c686d3c230fb907edaa0dde0632dea1113f8021031ac779c3a.png" src="_images/3f7ed075077030c686d3c230fb907edaa0dde0632dea1113f8021031ac779c3a.png" />
+</div>
 </div>
 </section>
 <section id="figure-6">
@@ -827,6 +840,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fig_dir</span><span class="p">,</span><span class="s1">&#39;DP_fig6.jpg&#39;</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0118b8883a15c61b777c83b657c3d14a3614c9be67dc1e65efcbdd442722b682.png" src="_images/0118b8883a15c61b777c83b657c3d14a3614c9be67dc1e65efcbdd442722b682.png" />
 </div>
 </div>
 </section>
@@ -914,9 +930,12 @@
          <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> 
          <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fig_dir</span><span class="p">,</span><span class="s1">&#39;DP_table2.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fig_dir</span><span class="p">,</span><span class="s1">&#39;DP_table2.jpg&#39;</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/006dd843ed9b64f030fb885d2f464a6cb61bdc82364ab140f6a71d175ddc8793.png" src="_images/006dd843ed9b64f030fb885d2f464a6cb61bdc82364ab140f6a71d175ddc8793.png" />
 </div>
 </div>
 </section>
@@ -1064,10 +1083,13 @@
          <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,)</span>
 
 <span class="c1"># 5. Save as JPG</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fig_dir</span><span class="p">,</span><span class="s1">&#39;DP_table3.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fig_dir</span><span class="p">,</span><span class="s1">&#39;DP_table3.jpg&#39;</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/336a7b4daaefec0b5f1f655006279703d2c2fd033ac86c3e3c8336ebe188e118.png" src="_images/336a7b4daaefec0b5f1f655006279703d2c2fd033ac86c3e3c8336ebe188e118.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1132,9 +1154,12 @@
 <span class="n">caption_text</span> <span class="o">=</span> <span class="s2">&quot;Figure 7. Interpolated monthly bottom conservative temperature (°C) climatologies.&quot;</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.13</span><span class="p">,</span> <span class="mf">0.13</span><span class="p">,</span> <span class="n">caption_text</span><span class="p">,</span> <span class="n">wrap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">cbar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Conservative temperature (°C)&#39;</span><span class="p">,</span><span class="n">pad</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span><span class="n">shrink</span><span class="o">=</span><span class="mf">0.85</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fig_dir</span><span class="p">,</span><span class="s1">&#39;DP_fig7.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fig_dir</span><span class="p">,</span><span class="s1">&#39;DP_fig7.jpg&#39;</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c8fba99c44add750110a656a876c5bbb66e0eb7f6559895947112add53bae53f.png" src="_images/c8fba99c44add750110a656a876c5bbb66e0eb7f6559895947112add53bae53f.png" />
 </div>
 </div>
 </section>
@@ -1155,9 +1180,12 @@
 <span class="n">caption_text</span> <span class="o">=</span> <span class="s2">&quot;Figure 8. Interpolated monthly bottom absolute salinity (g/kg) climatologies.&quot;</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.13</span><span class="p">,</span> <span class="mf">0.13</span><span class="p">,</span> <span class="n">caption_text</span><span class="p">,</span> <span class="n">wrap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">cbar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Absolute salinity (g/kg)&#39;</span><span class="p">,</span><span class="n">pad</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span><span class="n">shrink</span><span class="o">=</span><span class="mf">0.85</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;DP_fig8.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fig_dir</span><span class="p">,</span><span class="s1">&#39;DP_fig8.jpg&#39;</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0d3c7c49aa0d8bb34ee5dc3278ae3f4b47f2bcecd9664885510bab5a0f4ac0e6.png" src="_images/0d3c7c49aa0d8bb34ee5dc3278ae3f4b47f2bcecd9664885510bab5a0f4ac0e6.png" />
 </div>
 </div>
 </section>
@@ -1247,7 +1275,7 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="s2">&quot;Table 4: Root mean squared error from the bottom interpolation for both conservative temperature (CT) and absolute salinity (SA), along</span><span class="se">\n</span><span class="s2"> with normalized root mean squared error color coded by Alexander et al (2015) criteria&quot;</span><span class="p">,</span> 
          <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> 
          <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fig_dir</span><span class="p">,</span><span class="s1">&#39;DP_table4.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fig_dir</span><span class="p">,</span><span class="s1">&#39;DP_table4.jpg&#39;</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1404,7 +1432,7 @@
          <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,)</span>
 
 <span class="c1"># 5. Save as JPG</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fig_dir</span><span class="p">,</span><span class="s1">&#39;DP_table5.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fig_dir</span><span class="p">,</span><span class="s1">&#39;DP_table5.jpg&#39;</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
