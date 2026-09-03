@@ -34,4 +34,4 @@ jobs:
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: synan_hydrogrpahic_cliams/_build/html
+        publish_dir: synan_hydrographic_climas/_build/html
