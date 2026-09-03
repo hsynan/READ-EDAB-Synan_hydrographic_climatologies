@@ -6,6 +6,7 @@ root: intro
 chapters:
 - file: data_sources
 - file: processing_data
+- file: fishbot_sensitivity_test
 - file: interpolation
 - file: manuscript_figures
 - file: supplementary_figures
