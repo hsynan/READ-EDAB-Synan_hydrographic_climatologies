@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Introduction &#8212; My sample book</title>
+    <title>Interpolation &#8212; My sample book</title>
   
   
   
@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -60,10 +60,11 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'interpolation';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Data sources" href="data_sources.html" />
+    <link rel="next" title="Code used to create figures in “An in situ, interpolated hydrographic climatology of the surface Northwest Atlantic Ocean for 2000-2024”" href="manuscript_figures.html" />
+    <link rel="prev" title="Data processing" href="processing_data.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -115,8 +116,6 @@
       
       
       
-        
-      
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
@@ -136,7 +135,7 @@
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="intro.html">
   
   
   
@@ -163,16 +162,16 @@
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     Introduction
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="data_sources.html">Data sources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="processing_data.html">Data processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="interpolation.html">Interpolation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Interpolation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manuscript_figures.html">Code used to create figures in “An in situ, interpolated hydrographic climatology of the surface Northwest Atlantic Ocean for 2000-2024”</a></li>
 <li class="toctree-l1"><a class="reference internal" href="supplementary_figures.html">Supplementary figures</a></li>
 </ul>
@@ -251,7 +250,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Finterpolation.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -281,7 +280,7 @@
       
       
       
-      <li><a href="_sources/intro.md" target="_blank"
+      <li><a href="_sources/interpolation.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -291,7 +290,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -357,7 +356,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Introduction</h1>
+    <h1>Interpolation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -367,8 +366,12 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-re-create-interpolation"><strong>How to re-create interpolation:</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-clone-repository-if-not-already-done">Step 1: Clone repository (if not already done)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-cd-to-local-repository">Step 2: CD to local repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-run-interpolation">Step 3: Run interpolation</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -380,25 +383,58 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
-<p>This is the documentation for the data paper “Surface and bottom in situ, interpolated hydrographic climatologies of the Northwest Atlantic Ocean for 2000-2024”</p>
-<section id="authors">
-<h2>Authors<a class="headerlink" href="#authors" title="Link to this heading">#</a></h2>
-<p>Haley Synan, Kimberly Hyde, Colleen Mouw, Chris Melrose</p>
-</section>
-<section id="abstract">
-<h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
-<p>New in situ, interpolated hydrographic monthly climatologies were created for the Northeast U.S. Continental Shelf (NES) and surrounding boundary waters for the years 2000 - 2024. The climatologies were created at two depth bins: the surface and bottom, where the surface is defined as above the mixed layer depth, and the bottom includes all data within 10 meters of the bathymetric bottom. Multiple point data sources and data collection methods, including data collected from traditional vertical oceanographic profiles, flowthrough systems, buoys, gliders, and others, were aggregated to create the in situ dataset. Barnes objective analysis was performed to create the monthly climatologies for both temperature and salinity at the two depth bins. Root mean squared error (RMSE) and an uncertainty metric were provided with the interpolation. The uncertainty metric highlights regions and seasons that are data-poor and/or highly variable, and where there is lower confidence in the interpolated values. Results were validated using reference climatologies created using satellite and modeled data with the same spatiotemporal bounds. The surface temperature and salinity climatologies both yield significant correlations when compared to the reference climatologies, with the largest biases observed in temperature climatologies in the onshelf region during the summer months (bias&lt;|1.213| °C). Lower correlations in the winter months are observed during validation of bottom temperature climatologies, due to seasonal sampling bias. The products described here were created as input data for a water mass classification model (Synan et al., in prep), but may also be used for other applications, like anomaly detection or other modeling efforts.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="data_sources.html">Data sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="processing_data.html">Data processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="interpolation.html">Interpolation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="manuscript_figures.html">Code used to create figures in “An in situ, interpolated hydrographic climatology of the surface Northwest Atlantic Ocean for 2000-2024”</a></li>
-<li class="toctree-l1"><a class="reference internal" href="supplementary_figures.html">Supplementary figures</a></li>
-</ul>
+  <section class="tex2jax_ignore mathjax_ignore" id="interpolation">
+<h1>Interpolation<a class="headerlink" href="#interpolation" title="Link to this heading">#</a></h1>
+<p>Once the data is binned spatiotemporally, cleaned, and aggregated, we can create the climatologies (reference years 2000-2024) using Barnes objective analysis. The code used in the interpolation was translated to python from a package written by Lena Bartell (2016) in Matlab (<a class="reference external" href="https://www.mathworks.com/matlabcentral/fileexchange/58937-barnes-interpolation-barnes-objective-analysis">https://www.mathworks.com/matlabcentral/fileexchange/58937-barnes-interpolation-barnes-objective-analysis</a>) <br>
+The interpolation code can be found in <code class="docutils literal notranslate"><span class="pre">EXEC_INTERP.py</span></code> and the functions required for the interpolation are defined in <code class="docutils literal notranslate"><span class="pre">FUNC_INTERP.py</span></code> <br></p>
+<section id="how-to-re-create-interpolation">
+<h2><strong>How to re-create interpolation:</strong><a class="headerlink" href="#how-to-re-create-interpolation" title="Link to this heading">#</a></h2>
+<section id="step-1-clone-repository-if-not-already-done">
+<h3>Step 1: Clone repository (if not already done)<a class="headerlink" href="#step-1-clone-repository-if-not-already-done" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/hsynan/READ-EDAB-Synan_hydrographic_climatologies
+</pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fatal: destination path &#39;READ-EDAB-Synan_hydrographic_climatologies&#39; already exists and is not an empty directory.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-2-cd-to-local-repository">
+<h3>Step 2: CD to local repository<a class="headerlink" href="#step-2-cd-to-local-repository" title="Link to this heading">#</a></h3>
+</section>
+<section id="step-3-run-interpolation">
+<h3>Step 3: Run interpolation<a class="headerlink" href="#step-3-run-interpolation" title="Link to this heading">#</a></h3>
+<p>You can either download the cleaned, aggreggated point datasets from <a class="reference internal" href="#"><span class="xref myst">zenodo</span></a> or you can run it directly without downloading. In this example, the data is downloaded. The file_path must be the <strong>absolute file path</strong>, not relative. Additionally, these lines should be run via CLI, rather than in jupyter notebooks.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">EXEC_INTERP</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">depth</span> <span class="n">surface</span> <span class="o">--</span><span class="n">file_path</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">haley</span><span class="o">.</span><span class="n">synan</span>\<span class="n">Documents</span>\<span class="n">synan_hydrographic_climas</span>\<span class="n">AGGREGATED_POINT_SURFACE_2000_2024</span><span class="o">.</span><span class="n">csv</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="n">python</span> <span class="n">EXEC_INTERP</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">depth</span> <span class="n">surface</span> <span class="o">--</span><span class="n">file_path</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">haley</span><span class="o">.</span><span class="n">synan</span>\<span class="n">Documents</span>\<span class="n">synan_hydrographic_climas</span>\<span class="n">AGGREGATED_POINT_SURFACE_2000_2024</span><span class="o">.</span><span class="n">csv</span>
+           <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>OR</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">EXEC_INTERP</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">depth</span> <span class="n">bottom</span> <span class="o">--</span><span class="n">file_path</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">haley</span><span class="o">.</span><span class="n">synan</span>\<span class="n">Documents</span>\<span class="n">synan_hydrographic_climas</span>\<span class="n">AGGREGATED_POINT_BOTTOM_2000_2024</span><span class="o">.</span><span class="n">csv</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The output climatologies will either be downloaded to the same directory as the point data, or to the current directory.</p>
+</section>
 </section>
 </section>
 
@@ -432,12 +468,21 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="processing_data.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data processing</p>
+      </div>
+    </a>
     <a class="right-next"
-       href="data_sources.html"
+       href="manuscript_figures.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Data sources</p>
+        <p class="prev-next-title">Code used to create figures in “An in situ, interpolated hydrographic climatology of the surface Northwest Atlantic Ocean for 2000-2024”</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -459,8 +504,12 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-re-create-interpolation"><strong>How to re-create interpolation:</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-clone-repository-if-not-already-done">Step 1: Clone repository (if not already done)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-cd-to-local-repository">Step 2: CD to local repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-run-interpolation">Step 3: Run interpolation</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
