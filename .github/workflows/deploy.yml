@@ -1,0 +1,37 @@
+name: Deploy Jupyter Book
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    # Grant permissions to write to the gh-pages branch
+    permissions:
+      contents: write
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Install Jupyter Book
+      run: |
+        pip install jupyter-book
+
+    - name: Build the book
+      run: |
+        jupyter-book build synan_hydrographic_climas/
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: synan_hydrogrpahic_cliams/_build/html
