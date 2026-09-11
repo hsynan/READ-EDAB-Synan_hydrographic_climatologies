@@ -179,7 +179,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="fishbot_sensitivity_test.html">FIShBOT sensitivity tests</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Interpolation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="manuscript_figures.html">Code used to create figures in “An in situ, interpolated hydrographic climatology of the surface Northwest Atlantic Ocean for 2000-2024”</a></li>
-<li class="toctree-l1"><a class="reference internal" href="supplementary_figures.html">Supplementary figures</a></li>
 </ul>
 
     </div>
@@ -410,451 +409,312 @@ The interpolation code can be found in <code class="docutils literal notranslate
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cloning into 'READ-EDAB-Synan_hydrographic_climatologies'...
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>remote: Enumerating objects: 938, done.
-remote: Counting objects:   0% (1/508)
-remote: Counting objects:   1% (6/508)
-remote: Counting objects:   2% (11/508)
-remote: Counting objects:   3% (16/508)
-remote: Counting objects:   4% (21/508)
-remote: Counting objects:   5% (26/508)
-remote: Counting objects:   6% (31/508)
-remote: Counting objects:   7% (36/508)
-remote: Counting objects:   8% (41/508)
-remote: Counting objects:   9% (46/508)
-remote: Counting objects:  10% (51/508)
-remote: Counting objects:  11% (56/508)
-remote: Counting objects:  12% (61/508)
-remote: Counting objects:  13% (67/508)
-remote: Counting objects:  14% (72/508)
-remote: Counting objects:  15% (77/508)
-remote: Counting objects:  16% (82/508)
-remote: Counting objects:  17% (87/508)
-remote: Counting objects:  18% (92/508)
-remote: Counting objects:  19% (97/508)
-remote: Counting objects:  20% (102/508)
-remote: Counting objects:  21% (107/508)
-remote: Counting objects:  22% (112/508)
-remote: Counting objects:  23% (117/508)
-remote: Counting objects:  24% (122/508)
-remote: Counting objects:  25% (127/508)
-remote: Counting objects:  26% (133/508)
-remote: Counting objects:  27% (138/508)
-remote: Counting objects:  28% (143/508)
-remote: Counting objects:  29% (148/508)
-remote: Counting objects:  30% (153/508)
-remote: Counting objects:  31% (158/508)
-remote: Counting objects:  32% (163/508)
-remote: Counting objects:  33% (168/508)
-remote: Counting objects:  34% (173/508)
-remote: Counting objects:  35% (178/508)
-remote: Counting objects:  36% (183/508)
-remote: Counting objects:  37% (188/508)
-remote: Counting objects:  38% (194/508)
-remote: Counting objects:  39% (199/508)
-remote: Counting objects:  40% (204/508)
-remote: Counting objects:  41% (209/508)
-remote: Counting objects:  42% (214/508)
-remote: Counting objects:  43% (219/508)
-remote: Counting objects:  44% (224/508)
-remote: Counting objects:  45% (229/508)
-remote: Counting objects:  46% (234/508)
-remote: Counting objects:  47% (239/508)
-remote: Counting objects:  48% (244/508)
-remote: Counting objects:  49% (249/508)
-remote: Counting objects:  50% (254/508)
-remote: Counting objects:  51% (260/508)
-remote: Counting objects:  52% (265/508)
-remote: Counting objects:  53% (270/508)
-remote: Counting objects:  54% (275/508)
-remote: Counting objects:  55% (280/508)
-remote: Counting objects:  56% (285/508)
-remote: Counting objects:  57% (290/508)
-remote: Counting objects:  58% (295/508)
-remote: Counting objects:  59% (300/508)
-remote: Counting objects:  60% (305/508)
-remote: Counting objects:  61% (310/508)
-remote: Counting objects:  62% (315/508)
-remote: Counting objects:  63% (321/508)
-remote: Counting objects:  64% (326/508)
-remote: Counting objects:  65% (331/508)
-remote: Counting objects:  66% (336/508)
-remote: Counting objects:  67% (341/508)
-remote: Counting objects:  68% (346/508)
-remote: Counting objects:  69% (351/508)
-remote: Counting objects:  70% (356/508)
-remote: Counting objects:  71% (361/508)
-remote: Counting objects:  72% (366/508)
-remote: Counting objects:  73% (371/508)
-remote: Counting objects:  74% (376/508)
-remote: Counting objects:  75% (381/508)
-remote: Counting objects:  76% (387/508)
-remote: Counting objects:  77% (392/508)
-remote: Counting objects:  78% (397/508)
-remote: Counting objects:  79% (402/508)
-remote: Counting objects:  80% (407/508)
-remote: Counting objects:  81% (412/508)
-remote: Counting objects:  82% (417/508)
-remote: Counting objects:  83% (422/508)
-remote: Counting objects:  84% (427/508)
-remote: Counting objects:  85% (432/508)
-remote: Counting objects:  86% (437/508)
-remote: Counting objects:  87% (442/508)
-remote: Counting objects:  88% (448/508)
-remote: Counting objects:  89% (453/508)
-remote: Counting objects:  90% (458/508)
-remote: Counting objects:  91% (463/508)
-remote: Counting objects:  92% (468/508)
-remote: Counting objects:  93% (473/508)
-remote: Counting objects:  94% (478/508)
-remote: Counting objects:  95% (483/508)
-remote: Counting objects:  96% (488/508)
-remote: Counting objects:  97% (493/508)
-remote: Counting objects:  98% (498/508)
-remote: Counting objects:  99% (503/508)
-remote: Counting objects: 100% (508/508)
-remote: Counting objects: 100% (508/508), done.
-remote: Compressing objects:   0% (1/308)
-remote: Compressing objects:   1% (4/308)
-remote: Compressing objects:   2% (7/308)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>remote: Enumerating objects: 970, done.
+remote: Counting objects:   2% (1/45)
+remote: Counting objects:   4% (2/45)
+remote: Counting objects:   6% (3/45)
+remote: Counting objects:   8% (4/45)
+remote: Counting objects:  11% (5/45)
+remote: Counting objects:  13% (6/45)
+remote: Counting objects:  15% (7/45)
+remote: Counting objects:  17% (8/45)
+remote: Counting objects:  20% (9/45)
+remote: Counting objects:  22% (10/45)
+remote: Counting objects:  24% (11/45)
+remote: Counting objects:  26% (12/45)
+remote: Counting objects:  28% (13/45)
+remote: Counting objects:  31% (14/45)
+remote: Counting objects:  33% (15/45)
+remote: Counting objects:  35% (16/45)
+remote: Counting objects:  37% (17/45)
+remote: Counting objects:  40% (18/45)
+remote: Counting objects:  42% (19/45)
+remote: Counting objects:  44% (20/45)
+remote: Counting objects:  46% (21/45)
+remote: Counting objects:  48% (22/45)
+remote: Counting objects:  51% (23/45)
+remote: Counting objects:  53% (24/45)
+remote: Counting objects:  55% (25/45)
+remote: Counting objects:  57% (26/45)
+remote: Counting objects:  60% (27/45)
+remote: Counting objects:  62% (28/45)
+remote: Counting objects:  64% (29/45)
+remote: Counting objects:  66% (30/45)
+remote: Counting objects:  68% (31/45)
+remote: Counting objects:  71% (32/45)
+remote: Counting objects:  73% (33/45)
+remote: Counting objects:  75% (34/45)
+remote: Counting objects:  77% (35/45)
+remote: Counting objects:  80% (36/45)
+remote: Counting objects:  82% (37/45)
+remote: Counting objects:  84% (38/45)
+remote: Counting objects:  86% (39/45)
+remote: Counting objects:  88% (40/45)
+remote: Counting objects:  91% (41/45)
+remote: Counting objects:  93% (42/45)
+remote: Counting objects:  95% (43/45)
+remote: Counting objects:  97% (44/45)
+remote: Counting objects: 100% (45/45)
+remote: Counting objects: 100% (45/45), done.
+remote: Compressing objects:   4% (1/25)
+remote: Compressing objects:   8% (2/25)
+remote: Compressing objects:  12% (3/25)
+remote: Compressing objects:  16% (4/25)
+remote: Compressing objects:  20% (5/25)
+remote: Compressing objects:  24% (6/25)
+remote: Compressing objects:  28% (7/25)
+remote: Compressing objects:  32% (8/25)
+remote: Compressing objects:  36% (9/25)
+remote: Compressing objects:  40% (10/25)
+remote: Compressing objects:  44% (11/25)
+remote: Compressing objects:  48% (12/25)
+remote: Compressing objects:  52% (13/25)
+remote: Compressing objects:  56% (14/25)
+remote: Compressing objects:  60% (15/25)
+remote: Compressing objects:  64% (16/25)
+remote: Compressing objects:  68% (17/25)
+remote: Compressing objects:  72% (18/25)
+remote: Compressing objects:  76% (19/25)
+remote: Compressing objects:  80% (20/25)
+remote: Compressing objects:  84% (21/25)
+remote: Compressing objects:  88% (22/25)
+remote: Compressing objects:  92% (23/25)
+remote: Compressing objects:  96% (24/25)
+remote: Compressing objects: 100% (25/25)
+remote: Compressing objects: 100% (25/25), done.
+Receiving objects:   0% (1/970)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>remote: Compressing objects:   3% (10/308)
-remote: Compressing objects:   4% (13/308)
-remote: Compressing objects:   5% (16/308)
-remote: Compressing objects:   6% (19/308)
-remote: Compressing objects:   7% (22/308)
-remote: Compressing objects:   8% (25/308)
-remote: Compressing objects:   9% (28/308)
-remote: Compressing objects:  10% (31/308)
-remote: Compressing objects:  11% (34/308)
-remote: Compressing objects:  12% (37/308)
-remote: Compressing objects:  13% (41/308)
-remote: Compressing objects:  14% (44/308)
-remote: Compressing objects:  15% (47/308)
-remote: Compressing objects:  16% (50/308)
-remote: Compressing objects:  17% (53/308)
-remote: Compressing objects:  18% (56/308)
-remote: Compressing objects:  19% (59/308)
-remote: Compressing objects:  20% (62/308)
-remote: Compressing objects:  21% (65/308)
-remote: Compressing objects:  22% (68/308)
-remote: Compressing objects:  23% (71/308)
-remote: Compressing objects:  24% (74/308)
-remote: Compressing objects:  25% (77/308)
-remote: Compressing objects:  26% (81/308)
-remote: Compressing objects:  27% (84/308)
-remote: Compressing objects:  28% (87/308)
-remote: Compressing objects:  29% (90/308)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:   1% (10/970)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>remote: Compressing objects:  30% (93/308)
-remote: Compressing objects:  31% (96/308)
-remote: Compressing objects:  32% (99/308)
-remote: Compressing objects:  33% (102/308)
-remote: Compressing objects:  34% (105/308)
-remote: Compressing objects:  35% (108/308)
-remote: Compressing objects:  36% (111/308)
-remote: Compressing objects:  37% (114/308)
-remote: Compressing objects:  38% (118/308)
-remote: Compressing objects:  39% (121/308)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:   2% (20/970)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>remote: Compressing objects:  40% (124/308)
-remote: Compressing objects:  41% (127/308)
-remote: Compressing objects:  42% (130/308)
-remote: Compressing objects:  43% (133/308)
-remote: Compressing objects:  44% (136/308)
-remote: Compressing objects:  45% (139/308)
-remote: Compressing objects:  46% (142/308)
-remote: Compressing objects:  47% (145/308)
-remote: Compressing objects:  48% (148/308)
-remote: Compressing objects:  49% (151/308)
-remote: Compressing objects:  50% (154/308)
-remote: Compressing objects:  51% (158/308)
-remote: Compressing objects:  52% (161/308)
-remote: Compressing objects:  53% (164/308)
-remote: Compressing objects:  54% (167/308)
-remote: Compressing objects:  55% (170/308)
-remote: Compressing objects:  56% (173/308)
-remote: Compressing objects:  57% (176/308)
-remote: Compressing objects:  58% (179/308)
-remote: Compressing objects:  59% (182/308)
-remote: Compressing objects:  60% (185/308)
-remote: Compressing objects:  61% (188/308)
-remote: Compressing objects:  62% (191/308)
-remote: Compressing objects:  63% (195/308)
-remote: Compressing objects:  64% (198/308)
-remote: Compressing objects:  65% (201/308)
-remote: Compressing objects:  66% (204/308)
-remote: Compressing objects:  67% (207/308)
-remote: Compressing objects:  68% (210/308)
-remote: Compressing objects:  69% (213/308)
-remote: Compressing objects:  70% (216/308)
-remote: Compressing objects:  71% (219/308)
-remote: Compressing objects:  72% (222/308)
-remote: Compressing objects:  73% (225/308)
-remote: Compressing objects:  74% (228/308)
-remote: Compressing objects:  75% (231/308)
-remote: Compressing objects:  76% (235/308)
-remote: Compressing objects:  77% (238/308)
-remote: Compressing objects:  78% (241/308)
-remote: Compressing objects:  79% (244/308)
-remote: Compressing objects:  80% (247/308)
-remote: Compressing objects:  81% (250/308)
-remote: Compressing objects:  82% (253/308)
-remote: Compressing objects:  83% (256/308)
-remote: Compressing objects:  84% (259/308)
-remote: Compressing objects:  85% (262/308)
-remote: Compressing objects:  86% (265/308)
-remote: Compressing objects:  87% (268/308)
-remote: Compressing objects:  88% (272/308)
-remote: Compressing objects:  89% (275/308)
-remote: Compressing objects:  90% (278/308)
-remote: Compressing objects:  91% (281/308)
-remote: Compressing objects:  92% (284/308)
-remote: Compressing objects:  93% (287/308)
-remote: Compressing objects:  94% (290/308)
-remote: Compressing objects:  95% (293/308)
-remote: Compressing objects:  96% (296/308)
-remote: Compressing objects:  97% (299/308)
-remote: Compressing objects:  98% (302/308)
-remote: Compressing objects:  99% (305/308)
-remote: Compressing objects: 100% (308/308)
-remote: Compressing objects: 100% (308/308), done.
-Receiving objects:   0% (1/938)
-Receiving objects:   1% (10/938)
-Receiving objects:   2% (19/938)
-Receiving objects:   3% (29/938)
-Receiving objects:   4% (38/938)
-Receiving objects:   5% (47/938)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:   3% (30/970)
+Receiving objects:   4% (39/970)
+Receiving objects:   5% (49/970)
+Receiving objects:   6% (59/970)
+Receiving objects:   7% (68/970)
+Receiving objects:   8% (78/970)
+Receiving objects:   9% (88/970)
+Receiving objects:  10% (97/970)
+Receiving objects:  11% (107/970)
+Receiving objects:  12% (117/970)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:   6% (57/938)
-Receiving objects:   7% (66/938)
-Receiving objects:   8% (76/938)
-Receiving objects:   9% (85/938)
-Receiving objects:  10% (94/938)
-Receiving objects:  11% (104/938)
-Receiving objects:  12% (113/938)
-Receiving objects:  13% (122/938)
-Receiving objects:  14% (132/938)
-Receiving objects:  15% (141/938)
-Receiving objects:  16% (151/938)
-Receiving objects:  17% (160/938)
-Receiving objects:  18% (169/938)
-Receiving objects:  19% (179/938)
-Receiving objects:  20% (188/938)
-Receiving objects:  21% (197/938)
-Receiving objects:  22% (207/938)
-Receiving objects:  23% (216/938)
-Receiving objects:  24% (226/938)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  13% (127/970)
+Receiving objects:  14% (136/970)
+Receiving objects:  15% (146/970)
+Receiving objects:  16% (156/970)
+Receiving objects:  17% (165/970)
+Receiving objects:  18% (175/970)
+Receiving objects:  19% (185/970)
+Receiving objects:  20% (194/970)
+Receiving objects:  21% (204/970)
+Receiving objects:  22% (214/970)
+Receiving objects:  23% (224/970)
+Receiving objects:  24% (233/970)
+Receiving objects:  25% (243/970)
+Receiving objects:  26% (253/970)
+Receiving objects:  27% (262/970)
+Receiving objects:  28% (272/970)
+Receiving objects:  29% (282/970)
+Receiving objects:  30% (291/970)
+Receiving objects:  31% (301/970)
+Receiving objects:  32% (311/970)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  25% (235/938)
-Receiving objects:  26% (244/938)
-Receiving objects:  27% (254/938)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  33% (321/970)
+Receiving objects:  34% (330/970)
+Receiving objects:  35% (340/970)
+Receiving objects:  36% (350/970)
+Receiving objects:  37% (359/970)
+Receiving objects:  38% (369/970)
+Receiving objects:  39% (379/970)
+Receiving objects:  40% (388/970)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  28% (263/938)
-Receiving objects:  29% (273/938)
-Receiving objects:  30% (282/938)
-Receiving objects:  31% (291/938)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  41% (398/970)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  32% (301/938), 19.63 MiB | 39.13 MiB/s
-Receiving objects:  33% (310/938), 19.63 MiB | 39.13 MiB/s
-Receiving objects:  34% (319/938), 19.63 MiB | 39.13 MiB/s
-Receiving objects:  35% (329/938), 19.63 MiB | 39.13 MiB/s
-Receiving objects:  36% (338/938), 19.63 MiB | 39.13 MiB/s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  42% (408/970)
+Receiving objects:  43% (418/970)
+Receiving objects:  44% (427/970)
+Receiving objects:  45% (437/970)
+Receiving objects:  46% (447/970)
+Receiving objects:  47% (456/970)
+Receiving objects:  48% (466/970)
+Receiving objects:  49% (476/970)
+Receiving objects:  50% (485/970)
+Receiving objects:  51% (495/970)
+Receiving objects:  52% (505/970)
+Receiving objects:  53% (515/970)
+Receiving objects:  54% (524/970)
+Receiving objects:  55% (534/970)
+Receiving objects:  56% (544/970)
+Receiving objects:  57% (553/970)
+Receiving objects:  58% (563/970)
+Receiving objects:  59% (573/970)
+Receiving objects:  60% (582/970)
+Receiving objects:  61% (592/970)
+Receiving objects:  62% (602/970)
+Receiving objects:  63% (612/970)
+Receiving objects:  64% (621/970)
+Receiving objects:  65% (631/970)
+Receiving objects:  66% (641/970)
+Receiving objects:  67% (650/970)
+Receiving objects:  68% (660/970)
+Receiving objects:  69% (670/970)
+Receiving objects:  70% (679/970)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  37% (348/938), 19.63 MiB | 39.13 MiB/s
-Receiving objects:  38% (357/938), 19.63 MiB | 39.13 MiB/s
-Receiving objects:  39% (366/938), 19.63 MiB | 39.13 MiB/s
-Receiving objects:  40% (376/938), 19.63 MiB | 39.13 MiB/s
-Receiving objects:  41% (385/938), 19.63 MiB | 39.13 MiB/s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  71% (689/970)
+Receiving objects:  72% (699/970)
+Receiving objects:  73% (709/970)
+Receiving objects:  74% (718/970)
+Receiving objects:  75% (728/970)
+Receiving objects:  76% (738/970)
+Receiving objects:  77% (747/970)
+Receiving objects:  78% (757/970)
+Receiving objects:  79% (767/970)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  42% (394/938), 19.63 MiB | 39.13 MiB/s
-Receiving objects:  43% (404/938), 19.63 MiB | 39.13 MiB/s
-Receiving objects:  44% (413/938), 19.63 MiB | 39.13 MiB/s
-Receiving objects:  45% (423/938), 19.63 MiB | 39.13 MiB/s
-Receiving objects:  46% (432/938), 19.63 MiB | 39.13 MiB/s
-Receiving objects:  47% (441/938), 19.63 MiB | 39.13 MiB/s
-Receiving objects:  48% (451/938), 19.63 MiB | 39.13 MiB/s
-Receiving objects:  49% (460/938), 19.63 MiB | 39.13 MiB/s
-Receiving objects:  50% (469/938), 19.63 MiB | 39.13 MiB/s
-Receiving objects:  51% (479/938), 19.63 MiB | 39.13 MiB/s
-Receiving objects:  52% (488/938), 19.63 MiB | 39.13 MiB/s
-Receiving objects:  53% (498/938), 19.63 MiB | 39.13 MiB/s
-Receiving objects:  54% (507/938), 19.63 MiB | 39.13 MiB/s
-Receiving objects:  55% (516/938), 19.63 MiB | 39.13 MiB/s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  80% (776/970), 29.89 MiB | 59.73 MiB/s
+Receiving objects:  81% (786/970), 29.89 MiB | 59.73 MiB/s
+Receiving objects:  82% (796/970), 29.89 MiB | 59.73 MiB/s
+Receiving objects:  83% (806/970), 29.89 MiB | 59.73 MiB/s
+Receiving objects:  84% (815/970), 29.89 MiB | 59.73 MiB/s
+Receiving objects:  85% (825/970), 29.89 MiB | 59.73 MiB/s
+Receiving objects:  86% (835/970), 29.89 MiB | 59.73 MiB/s
+Receiving objects:  87% (844/970), 29.89 MiB | 59.73 MiB/s
+Receiving objects:  88% (854/970), 29.89 MiB | 59.73 MiB/s
+Receiving objects:  89% (864/970), 29.89 MiB | 59.73 MiB/s
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  56% (526/938), 19.63 MiB | 39.13 MiB/s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  90% (873/970), 29.89 MiB | 59.73 MiB/s
+Receiving objects:  91% (883/970), 29.89 MiB | 59.73 MiB/s
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  57% (535/938), 19.63 MiB | 39.13 MiB/s
-Receiving objects:  58% (545/938), 19.63 MiB | 39.13 MiB/s
-Receiving objects:  59% (554/938), 19.63 MiB | 39.13 MiB/s
-Receiving objects:  60% (563/938), 19.63 MiB | 39.13 MiB/s
-Receiving objects:  61% (573/938), 19.63 MiB | 39.13 MiB/s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  92% (893/970), 29.89 MiB | 59.73 MiB/s
+Receiving objects:  93% (903/970), 29.89 MiB | 59.73 MiB/s
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  61% (580/938), 19.63 MiB | 39.13 MiB/s
-Receiving objects:  62% (582/938), 19.63 MiB | 39.13 MiB/s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  94% (912/970), 29.89 MiB | 59.73 MiB/s
+Receiving objects:  95% (922/970), 29.89 MiB | 59.73 MiB/s
+Receiving objects:  96% (932/970), 29.89 MiB | 59.73 MiB/s
+Receiving objects:  97% (941/970), 29.89 MiB | 59.73 MiB/s
+Receiving objects:  98% (951/970), 29.89 MiB | 59.73 MiB/s
+Receiving objects:  99% (961/970), 29.89 MiB | 59.73 MiB/s
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  63% (591/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  64% (601/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  65% (610/938), 39.16 MiB | 38.26 MiB/s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>remote: Total 970 (delta 34), reused 22 (delta 20), pack-reused 925 (from 1)
+Receiving objects: 100% (970/970), 29.89 MiB | 59.73 MiB/s
+Receiving objects: 100% (970/970), 63.58 MiB | 64.40 MiB/s, done.
+Resolving deltas:   0% (0/368)
+Resolving deltas:   1% (4/368)
+Resolving deltas:   2% (8/368)
+Resolving deltas:   3% (12/368)
+Resolving deltas:   4% (15/368)
+Resolving deltas:   5% (19/368)
+Resolving deltas:   6% (23/368)
+Resolving deltas:   7% (26/368)
+Resolving deltas:   8% (30/368)
+Resolving deltas:   9% (34/368)
+Resolving deltas:  10% (37/368)
+Resolving deltas:  11% (41/368)
+Resolving deltas:  12% (45/368)
+Resolving deltas:  13% (48/368)
+Resolving deltas:  14% (52/368)
+Resolving deltas:  15% (56/368)
+Resolving deltas:  16% (59/368)
+Resolving deltas:  17% (63/368)
+Resolving deltas:  18% (67/368)
+Resolving deltas:  19% (70/368)
+Resolving deltas:  20% (74/368)
+Resolving deltas:  21% (78/368)
+Resolving deltas:  22% (81/368)
+Resolving deltas:  23% (85/368)
+Resolving deltas:  24% (89/368)
+Resolving deltas:  25% (92/368)
+Resolving deltas:  26% (96/368)
+Resolving deltas:  27% (100/368)
+Resolving deltas:  28% (104/368)
+Resolving deltas:  29% (107/368)
+Resolving deltas:  30% (111/368)
+Resolving deltas:  31% (115/368)
+Resolving deltas:  32% (118/368)
+Resolving deltas:  33% (122/368)
+Resolving deltas:  34% (126/368)
+Resolving deltas:  35% (129/368)
+Resolving deltas:  36% (133/368)
+Resolving deltas:  37% (137/368)
+Resolving deltas:  38% (140/368)
+Resolving deltas:  39% (144/368)
+Resolving deltas:  40% (148/368)
+Resolving deltas:  41% (151/368)
+Resolving deltas:  42% (155/368)
+Resolving deltas:  43% (159/368)
+Resolving deltas:  44% (162/368)
+Resolving deltas:  45% (166/368)
+Resolving deltas:  46% (170/368)
+Resolving deltas:  47% (173/368)
+Resolving deltas:  48% (177/368)
+Resolving deltas:  49% (181/368)
+Resolving deltas:  50% (184/368)
+Resolving deltas:  51% (188/368)
+Resolving deltas:  52% (192/368)
+Resolving deltas:  53% (196/368)
+Resolving deltas:  54% (199/368)
+Resolving deltas:  55% (203/368)
+Resolving deltas:  56% (207/368)
+Resolving deltas:  57% (210/368)
+Resolving deltas:  58% (214/368)
+Resolving deltas:  59% (218/368)
+Resolving deltas:  60% (221/368)
+Resolving deltas:  61% (225/368)
+Resolving deltas:  62% (229/368)
+Resolving deltas:  63% (232/368)
+Resolving deltas:  64% (236/368)
+Resolving deltas:  65% (240/368)
+Resolving deltas:  66% (243/368)
+Resolving deltas:  67% (247/368)
+Resolving deltas:  68% (251/368)
+Resolving deltas:  69% (254/368)
+Resolving deltas:  70% (258/368)
+Resolving deltas:  71% (262/368)
+Resolving deltas:  72% (265/368)
+Resolving deltas:  73% (269/368)
+Resolving deltas:  74% (273/368)
+Resolving deltas:  75% (276/368)
+Resolving deltas:  76% (280/368)
+Resolving deltas:  77% (284/368)
+Resolving deltas:  78% (288/368)
+Resolving deltas:  79% (291/368)
+Resolving deltas:  80% (295/368)
+Resolving deltas:  81% (299/368)
+Resolving deltas:  82% (302/368)
+Resolving deltas:  83% (306/368)
+Resolving deltas:  84% (310/368)
+Resolving deltas:  85% (313/368)
+Resolving deltas:  86% (317/368)
+Resolving deltas:  87% (321/368)
+Resolving deltas:  88% (324/368)
+Resolving deltas:  89% (328/368)
+Resolving deltas:  90% (332/368)
+Resolving deltas:  91% (335/368)
+Resolving deltas:  92% (339/368)
+Resolving deltas:  93% (343/368)
+Resolving deltas:  94% (346/368)
+Resolving deltas:  95% (350/368)
+Resolving deltas:  96% (354/368)
+Resolving deltas:  97% (357/368)
+Resolving deltas:  98% (361/368)
+Resolving deltas:  99% (365/368)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  66% (620/938), 39.16 MiB | 38.26 MiB/s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  67% (629/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  68% (638/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  69% (648/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  70% (657/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  71% (666/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  72% (676/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  73% (685/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  74% (695/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  75% (704/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  76% (713/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  77% (723/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  78% (732/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  79% (742/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  80% (751/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  81% (760/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  82% (770/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  83% (779/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  84% (788/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  85% (798/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  86% (807/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  87% (817/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  88% (826/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  89% (835/938), 39.16 MiB | 38.26 MiB/s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  90% (845/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  91% (854/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  92% (863/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  93% (873/938), 39.16 MiB | 38.26 MiB/s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  94% (882/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  95% (892/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  96% (901/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  97% (910/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  98% (920/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects:  99% (929/938), 39.16 MiB | 38.26 MiB/s
-remote: Total 938 (delta 204), reused 396 (delta 137), pack-reused 430 (from 4)
-Receiving objects: 100% (938/938), 39.16 MiB | 38.26 MiB/s
-Receiving objects: 100% (938/938), 51.76 MiB | 38.21 MiB/s, done.
-Resolving deltas:   0% (0/311)
-Resolving deltas:   1% (4/311)
-Resolving deltas:   2% (7/311)
-Resolving deltas:   3% (10/311)
-Resolving deltas:   4% (13/311)
-Resolving deltas:   5% (16/311)
-Resolving deltas:   6% (19/311)
-Resolving deltas:   7% (22/311)
-Resolving deltas:   8% (25/311)
-Resolving deltas:   9% (28/311)
-Resolving deltas:  10% (32/311)
-Resolving deltas:  11% (35/311)
-Resolving deltas:  12% (38/311)
-Resolving deltas:  13% (41/311)
-Resolving deltas:  14% (44/311)
-Resolving deltas:  15% (47/311)
-Resolving deltas:  16% (50/311)
-Resolving deltas:  17% (53/311)
-Resolving deltas:  18% (56/311)
-Resolving deltas:  19% (60/311)
-Resolving deltas:  20% (63/311)
-Resolving deltas:  21% (66/311)
-Resolving deltas:  22% (69/311)
-Resolving deltas:  23% (72/311)
-Resolving deltas:  24% (75/311)
-Resolving deltas:  25% (78/311)
-Resolving deltas:  26% (81/311)
-Resolving deltas:  27% (84/311)
-Resolving deltas:  28% (88/311)
-Resolving deltas:  29% (91/311)
-Resolving deltas:  30% (94/311)
-Resolving deltas:  31% (97/311)
-Resolving deltas:  32% (100/311)
-Resolving deltas:  33% (103/311)
-Resolving deltas:  34% (106/311)
-Resolving deltas:  35% (109/311)
-Resolving deltas:  36% (112/311)
-Resolving deltas:  37% (116/311)
-Resolving deltas:  38% (119/311)
-Resolving deltas:  39% (122/311)
-Resolving deltas:  40% (125/311)
-Resolving deltas:  41% (128/311)
-Resolving deltas:  42% (131/311)
-Resolving deltas:  43% (134/311)
-Resolving deltas:  44% (137/311)
-Resolving deltas:  45% (140/311)
-Resolving deltas:  46% (144/311)
-Resolving deltas:  47% (147/311)
-Resolving deltas:  48% (150/311)
-Resolving deltas:  49% (153/311)
-Resolving deltas:  50% (156/311)
-Resolving deltas:  51% (159/311)
-Resolving deltas:  52% (162/311)
-Resolving deltas:  53% (165/311)
-Resolving deltas:  54% (168/311)
-Resolving deltas:  55% (172/311)
-Resolving deltas:  56% (175/311)
-Resolving deltas:  57% (178/311)
-Resolving deltas:  58% (181/311)
-Resolving deltas:  59% (184/311)
-Resolving deltas:  60% (187/311)
-Resolving deltas:  61% (190/311)
-Resolving deltas:  62% (193/311)
-Resolving deltas:  63% (196/311)
-Resolving deltas:  64% (200/311)
-Resolving deltas:  65% (203/311)
-Resolving deltas:  66% (206/311)
-Resolving deltas:  67% (209/311)
-Resolving deltas:  68% (212/311)
-Resolving deltas:  69% (215/311)
-Resolving deltas:  70% (218/311)
-Resolving deltas:  71% (221/311)
-Resolving deltas:  72% (224/311)
-Resolving deltas:  73% (228/311)
-Resolving deltas:  74% (231/311)
-Resolving deltas:  75% (234/311)
-Resolving deltas:  76% (237/311)
-Resolving deltas:  77% (240/311)
-Resolving deltas:  78% (243/311)
-Resolving deltas:  79% (246/311)
-Resolving deltas:  80% (249/311)
-Resolving deltas:  81% (252/311)
-Resolving deltas:  82% (256/311)
-Resolving deltas:  83% (259/311)
-Resolving deltas:  84% (262/311)
-Resolving deltas:  85% (265/311)
-Resolving deltas:  86% (268/311)
-Resolving deltas:  87% (271/311)
-Resolving deltas:  88% (274/311)
-Resolving deltas:  89% (277/311)
-Resolving deltas:  90% (280/311)
-Resolving deltas:  91% (284/311)
-Resolving deltas:  92% (287/311)
-Resolving deltas:  93% (290/311)
-Resolving deltas:  94% (293/311)
-Resolving deltas:  95% (296/311)
-Resolving deltas:  96% (299/311)
-Resolving deltas:  97% (302/311)
-Resolving deltas:  98% (305/311)
-Resolving deltas:  99% (308/311)
-Resolving deltas: 100% (311/311)
-Resolving deltas: 100% (311/311), done.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Resolving deltas: 100% (368/368)
+Resolving deltas: 100% (368/368), done.
 </pre></div>
 </div>
 </div>
