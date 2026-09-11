@@ -1,6 +1,9 @@
 # Surface and bottom in situ, interpolated hydrographic climatologies of the Northwest Atlantic Ocean for 2000-2024
 ### Description
-This repository contains the data and code used to create the figures and information for Synan et al (in prep): Surface and bottom in situ, interpolated hydrographic climatologies of the Northwest Atlantic Ocean for 2000-2024
+This repository contains the data and code used to create the figures and information for Synan et al (in prep): Surface and bottom in situ, interpolated hydrographic climatologies of the Northwest Atlantic Ocean for 2000-2024. <br>
+
+The products created from the code in this repository are available on Zenodo. The standardized surface and bottom temperature and salinity data are available [HERE](https://zenodo.org/uploads/22696811) (10.5281/zenodo.22696811) and the climatologies are available [HERE](https://zenodo.org/uploads/20183495) (10.5281/zenodo.20183495)
+
 ### Authors
 Haley Synan, Kimberly Hyde, Colleen Mouw, Chris Melrose, Linus Stoltz, Sarah Salois
 ## Abstract
